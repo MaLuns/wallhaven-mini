@@ -1,0 +1,12 @@
+<view class="share-reward-header {{blur?'blur':''}}" style="min-height: {{navBarSpaceHeight}}px" style="background-color: {{backgroundColor}}">
+  <view class="navbar">
+    <view style="min-height:{{statusBarHeight}}px;" />
+    <view style="min-height:{{navigateContentHeight}}px;" class="navbar-content">
+      <view class="go-back" style="min-height:{{navigateContentHeight}}px;">
+        <slot></slot>
+      </view>
+      <text class="navbar-title" style="max-width:{{navigateTitleMaxWidth}}px;">{{title}}</text>
+    </view>
+  </view>
+</view>
+<view style="min-height: {{navBarSpaceHeight}}px;width:100%;"></view>

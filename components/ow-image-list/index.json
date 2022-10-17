@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "ow-image": "./item"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "ow-custom-navigation": "/components/ow-custom-navigation/index",
+    "ow-toast": "/components/ow-toast/index"
+  }
+}

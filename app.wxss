@@ -1,0 +1,30 @@
+.checkbox-group label {
+  padding: 6px 10px;
+  border-left: 1px #e0e0e0 solid;
+  border-bottom: 1px #e0e0e0 solid;
+  border-top: 1px #e0e0e0 solid;
+}
+
+.checkbox-group label:first-child {
+  border-radius: 3px 0 0 3px;
+}
+
+.checkbox-group label:last-child {
+  border-right: 1px #e0e0e0 solid;
+  border-radius: 0 3px 3px 0;
+}
+
+.checkbox-group label[aria-checked=true] {
+  background: #2d8cf0;
+  border-color: #2d8cf0;
+  color: #fff;
+}
+
+.checkbox-group label[aria-checked=true]+label[aria-checked=true] {
+  border-left-color: #76b1f0;
+}
+
+.checkbox-group checkbox,
+.checkbox-group radio {
+  display: none;
+}

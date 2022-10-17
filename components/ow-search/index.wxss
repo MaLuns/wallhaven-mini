@@ -1,0 +1,42 @@
+.search-plan {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  z-index: 999;
+  width: calc(100% - 40rpx);
+  padding: 20rpx;
+  background-color: #f1f1f1;
+  box-shadow: 1px 9px 8px 0px #00000030;
+  overflow: hidden;
+  transition: opacity .3s;
+  transform: scaleY(0);
+  opacity: 0;
+  transform-origin: top;
+}
+
+.search-plan.show {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.search-mask {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.493);
+  opacity: 0;
+  transition: opacity .3s;
+  transform: scaleY(0);
+  transform-origin: top;
+}
+
+.search-mask.show {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.icon-search {
+  display: block;
+}

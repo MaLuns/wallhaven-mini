@@ -1,0 +1,1 @@
+<ow-image bindtap="viewImage" showInfo="{{true}}" image="{{item}}" height="{{width/item.ratio+'rpx'}}" data-idx="{{index}}" data-src="{{item.path}}" wx:for="{{list}}" wx:key="url"></ow-image>

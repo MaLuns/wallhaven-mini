@@ -1,0 +1,23 @@
+<ow-custom-navigation title="One Wallhaven" blur="true" backgroundColor="#ffffffa1"></ow-custom-navigation>
+<view class="random-view">
+  <view class="title">随机</view>
+  <ow-image-list-h bindclick="onPreviewList" height="{{500}}" list="{{randomList}}"></ow-image-list-h>
+</view>
+<view>
+  <view class="title">分类</view>
+  <view class="nav">
+    <navigator url="/pages/categorie/index?title={{item.label}}&categories={{item.value}}" class="nav-item" wx:for="{{nav}}" wx:key="index">
+      {{item.label}}
+    </navigator>
+  </view>
+</view>
+<view>
+  <view class="title">最近更新</view>
+  <view class="list">
+    <ow-image-list bindclick="onPreview" width="{{345}}" list="{{list_left}}"></ow-image-list>
+    <ow-image-list bindclick="onPreview" width="{{345}}" list="{{list_right}}"></ow-image-list>
+  </view>
+</view>
+<page-container show="{{previewShow}}" z-index="1001">
+  <ow-image-preview model:show="{{previewShow}}" list="{{previewList}}" index="{{previewIndex}}"></ow-image-preview>
+</page-container>

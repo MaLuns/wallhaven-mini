@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "ow-custom-navigation": "/components/ow-custom-navigation/index",
+    "ow-search": "/components/ow-search/index",
+    "ow-search-item": "/components/ow-search/item",
+    "ow-image-list": "/components/ow-image-list/index",
+    "ow-image-list-h": "/components/ow-image-list/list-h",
+    "ow-image-preview": "/components/ow-image-preview/index"
+  },
+  "navigationStyle": "custom",
+  "onReachBottomDistance": 500,
+  "enablePullDownRefresh": true
+}

@@ -1,0 +1,38 @@
+.title {
+  margin-left: 30rpx;
+  font-size: 20px;
+  line-height: 50px;
+  font-weight: bold;
+}
+
+.nav {
+  padding: 20rpx;
+  display: flex;
+}
+
+.nav .nav-item+.nav-item {
+  margin-left: 20rpx;
+}
+
+.nav .nav-item {
+  line-height: 100rpx;
+  text-align: center;
+  flex: 1;
+  background-image: linear-gradient(45deg, #c6a2e7 0%, #9cc0e4 100%);
+  color: #fff;
+  border-radius: 4px;
+}
+
+.list {
+  padding: 20rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.list ow-image-list {
+  flex: 1;
+}
+
+ow-image-list+ow-image-list {
+  margin-left: 20rpx;
+}

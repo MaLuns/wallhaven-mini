@@ -1,0 +1,22 @@
+<view class="preview" wx:if="{{show}}">
+  <image mode="aspectFill" class="big-image" src="{{previewItem.thumbs.original}}"></image>
+  <view class="big-image blur"></view>
+  <image lazy-load class="big-image" mode="aspectFill" src="{{previewItem.path}}" binderror="imageLoadError"></image>
+  <!-- <swiper class="big-image" current="{{previewIndex}}" bindchange="changeBigImage">
+    <swiper-item wx:for="{{list}}" wx:key="index" class="big-image">
+      <image lazy-load class="big-image" mode="aspectFill" src="{{item.path}}" binderror="imageLoadError"></image>
+    </swiper-item>
+  </swiper> -->
+  <ow-custom-navigation backgroundColor="transparent">
+    <view class="close" bindtap="close">←</view>
+  </ow-custom-navigation>
+  <scroll-view id="scrollview" class="preview-list" scroll-x="{{true}}" scroll-y="{{false}}" show-scrollbar="false" bounces="true">
+    <image id="image-{{index}}" bindtap="change" lazy-load data-index="{{index}}" class="{{previewItem.path === item.path?'active':''}}" mode="aspectFill" wx:for="{{list}}" wx:key="index" src="{{item.thumbs.original}}"></image>
+  </scroll-view>
+  <view class="image-btns">
+    <view bindtap="preViewImage">预览</view>
+    <view bindtap="saveImage">下载</view>
+    <view bindtap="shareImage">分享</view>
+  </view>
+</view>
+<ow-toast id="toast" />

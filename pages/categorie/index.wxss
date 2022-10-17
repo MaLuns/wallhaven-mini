@@ -1,0 +1,20 @@
+.list {
+  padding: 20rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.list ow-image-list {
+  flex: 1;
+}
+
+ow-image-list+ow-image-list {
+  margin-left: 20rpx;
+}
+
+.close {
+  font-size: 1.6rem;
+  font-weight: bold;
+  padding: 0 20rpx;
+  border-radius: 3px;
+}

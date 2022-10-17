@@ -1,0 +1,13 @@
+<view class="search-item">
+  <view class="search-item-label">
+    <view class="slot">
+      <slot name="label"></slot>
+    </view>
+    <view class="default">
+      {{label}}
+    </view>
+  </view>
+  <view class="search-item-value">
+    <slot></slot>
+  </view>
+</view>

@@ -1,0 +1,35 @@
+<ow-custom-navigation title="{{title}}" blur="true" backgroundColor="transparent">
+  <view class="close" bindtap="close">←</view>
+  <!-- <ow-search>
+    <ow-search-item label="{{'分类'}}">
+      <checkbox-group class="checkbox-group" bindchange="chechBoxChange">
+        <label class="checkbox" wx:for="{{search.categories}}" wx:key="index">
+          <checkbox value="{{index}}" checked="{{item.checked}}" />
+          {{item.label}}
+        </label>
+      </checkbox-group>
+    </ow-search-item>
+    <ow-search-item label="{{'等级'}}">
+      <checkbox-group class="checkbox-group">
+        <label class="checkbox" wx:for="{{search.purity}}" wx:key="index">
+          <checkbox value="{{index}}" checked="{{item.checked}}" />
+          {{item.label}}
+        </label>
+      </checkbox-group>
+    </ow-search-item>
+    <ow-search-item label="{{'分辨率'}}"></ow-search-item>
+    <ow-search-item label="{{'排序'}}"></ow-search-item>
+    <ow-search-item label="{{'排序方式'}}">
+      <radio-group class="checkbox-group">
+        <label class="checkbox" wx:for="{{search.order}}" wx:key="index">
+          <radio value="{{item.value}}" checked="{{item.checked}}" />
+          {{item.label}}
+        </label>
+      </radio-group>
+    </ow-search-item>
+  </ow-search> -->
+</ow-custom-navigation>
+<view class="list">
+  <ow-image-list bindclick="onPreview" width="{{345}}" list="{{list_left}}"></ow-image-list>
+  <ow-image-list bindclick="onPreview" width="{{345}}" list="{{list_right}}"></ow-image-list>
+</view>

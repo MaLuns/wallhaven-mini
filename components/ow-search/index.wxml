@@ -1,0 +1,9 @@
+<view bindtap="changeSearchPlan">
+  <icon class="icon-search" color="#000"  type="search" size="20"></icon>
+</view>
+<view bindtap="changeSearchPlan" catchtouchmove="true" class="search-mask {{show?'show':'' }}"></view>
+<view class="search-plan {{show?'show':'' }}" catchtouchmove="true">
+  <slot></slot>
+  <view class="search-btn">
+  </view>
+</view>

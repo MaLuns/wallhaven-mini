@@ -1,0 +1,3 @@
+<scroll-view class="scroll-view" scroll-x="{{true}}" scroll-y="{{false}}" show-scrollbar="false" bounces="true" style="width: 100%;height: {{height}}rpx;">
+  <ow-image bindtap="viewImage" class="image" image="{{item}}" type="vertical" height="{{height+'rpx'}}" width="{{height*item.ratio+'rpx'}}" data-idx="{{index}}" data-src="{{item.path}}" wx:for="{{list}}" wx:key="url" showInfo="{{false}}"></ow-image>
+</scroll-view>
