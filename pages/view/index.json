@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "ow-custom-navigation": "/components/ow-custom-navigation/index"
+  },
+  "navigationStyle": "custom"
+}

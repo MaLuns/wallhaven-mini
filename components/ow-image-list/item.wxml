@@ -1,11 +1,6 @@
-<view bindtap="viewImage" data-src="{{image.path}}" style="height: {{height}}; width: {{width}};" class="image {{type}}">
-  <image lazy-load data-src="{{image.path}}" src="{{image.thumbs.original}}"></image>
-  <view class="image-info" wx:if="{{showInfo}}">
-    <view>
-      {{image.file_type}}
-    </view>
-    <view>
-      {{image.file_size_str}}
-    </view>
+<view data-id="{{image.id}}" data-src="{{image.path}}" style="height: {{height}}; width: {{width}};" class="image {{type}}">
+  <image lazy-load data-id="{{image.id}}" data-src="{{image.path}}" src="{{image.original}}"></image>
+  <view class="image-info" data-id="{{image.id}}" wx:if="{{showInfo}}">
+    <view data-id="{{image.id}}">{{image.file_size_str}}</view>
   </view>
 </view>

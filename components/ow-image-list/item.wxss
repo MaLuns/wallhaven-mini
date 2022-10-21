@@ -1,9 +1,12 @@
 .image {
   border-radius: 6px;
   overflow: hidden;
-  background-color: #eee;
+  background-color: #525252;
   position: relative;
   margin-bottom: 20rpx;
+  flex-shrink: 0;
+  flex-grow: 0;
+  box-shadow: 0px 2px 5px 0px #353434ed;
 }
 
 .image image {
@@ -12,21 +15,25 @@
 }
 
 .image-info {
-  position: absolute;
+  position: absolute; 
   bottom: 0;
-  line-height: 2.6rem;
-  height: 2.6rem;
+  line-height: 2rem;
+  height: 2rem;
   width: calc(100% - 20rpx);
   background: rgba(0, 0, 0, 0.247);
   color: #fff;
   padding: 0 10rpx;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   font-size: 24rpx;
 }
 
 .vertical {
   display: inline-block;
-  margin-bottom: 0rpx;
   margin-left: 20rpx;
+  margin-top: 10rpx;
+}
+
+.vertical:last-child {
+  margin-right: 20rpx;
 }

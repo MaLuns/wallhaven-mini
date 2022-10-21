@@ -7,7 +7,7 @@
 }
 
 .search-item+.search-item {
-  border-top: 1px solid rgb(224, 224, 224);
+  border-top: 1px solid #6d6c6c;
 }
 
 .default {
@@ -16,4 +16,13 @@
 
 .slot:empty+.default {
   display: block;
+}
+
+.search-item-label {
+  margin-right: 20px;
+}
+
+.search-item-value {
+  flex: 1;
+  text-align: right;
 }

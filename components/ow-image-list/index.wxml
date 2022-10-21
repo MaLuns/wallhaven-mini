@@ -1,1 +1,14 @@
-<ow-image bindtap="viewImage" showInfo="{{true}}" image="{{item}}" height="{{width/item.ratio+'rpx'}}" data-idx="{{index}}" data-src="{{item.path}}" wx:for="{{list}}" wx:key="url"></ow-image>
+<view class="list">
+  <block wx:if="{{list[0].length}}">
+    <view class="image-list" wx:for="{{list}}" wx:key="index" wx:for-item="childen">
+      <block wx:for="{{childen}}" wx:key="index" wx:for-item="items">
+        <ow-image wx:for="{{items}}" wx:key="index" bindtap="viewImage" showInfo="{{true}}" image="{{item}}" height="{{item.height+'rpx'}}" data-id="{{item.id}}"></ow-image>
+      </block>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="image-list" wx:for="{{count}}" wx:key="index">
+      <ow-skeleton wx:for="{{4}}" wx:key="index" height="{{width/0.56+'rpx'}}" width="{{width+'rpx'}}"></ow-skeleton>
+    </view>
+  </block>
+</view>

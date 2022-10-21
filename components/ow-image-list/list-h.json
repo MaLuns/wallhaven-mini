@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-    "ow-image": "./item"
+    "ow-image": "./item",
+    "ow-skeleton": "/components/ow-skeleton/index"
   }
 }

@@ -1,0 +1,15 @@
+.big-image {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+}
+
+.close {
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.445);
+  padding: 0 20rpx;
+  border-radius: 3px;
+}

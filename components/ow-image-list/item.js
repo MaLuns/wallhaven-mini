@@ -6,14 +6,20 @@ Component({
     image: {
       type: Object,
       value: () => ({
-        thumbs: {}
+        id: '',
+        path: '',
+        original: '',
+        file_size_str: '',
       })
     },
     showInfo: {
       type: Boolean,
       value: true
     },
-    type: '',
+    type: {
+      type: String,
+      value: ''
+    },
     height: {
       optionalTypes: [String, Number],
       value: '100%'
@@ -21,19 +27,6 @@ Component({
     width: {
       optionalTypes: [String, Number],
       value: '100%'
-    }
-  },
-  methods: {
-    viewImage: function (e) {
-      const {
-        src,
-        idx
-      } = e.target.dataset;
-
-      this.triggerEvent('click', {
-        src,
-        idx
-      })
     }
   }
 })

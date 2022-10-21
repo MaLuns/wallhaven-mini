@@ -1,3 +1,10 @@
-<scroll-view class="scroll-view" scroll-x="{{true}}" scroll-y="{{false}}" show-scrollbar="false" bounces="true" style="width: 100%;height: {{height}}rpx;">
-  <ow-image bindtap="viewImage" class="image" image="{{item}}" type="vertical" height="{{height+'rpx'}}" width="{{height*item.ratio+'rpx'}}" data-idx="{{index}}" data-src="{{item.path}}" wx:for="{{list}}" wx:key="url" showInfo="{{false}}"></ow-image>
+<scroll-view class="scroll-view" enable-flex="true" scroll-x="{{true}}" scroll-y="{{false}}" show-scrollbar="false" bounces="true" style="height: {{height+20}}rpx;">
+  <block wx:if="{{list.length}}">
+    <block wx:for="{{list}}" wx:for-item="childen" wx:key="index">
+      <ow-image wx:for="{{childen}}" wx:key="index" bindtap="viewImage" class="image" image="{{item}}" type="vertical" height="{{height+'rpx'}}" width="{{item.width+'rpx'}}" data-id="{{item.id}}" showInfo="{{false}}"></ow-image>
+    </block>
+  </block>
+  <block wx:else>
+    <ow-skeleton wx:for="{{10}}" wx:key="index" type="vertical" height="{{height+'rpx'}}" width="{{height*0.56+'rpx'}}"></ow-skeleton>
+  </block>
 </scroll-view>

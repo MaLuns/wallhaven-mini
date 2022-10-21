@@ -1,27 +1,13 @@
-.image {
-  border-radius: 6px;
-  width: 100%;
-  overflow: hidden;
-  background-color: #eee;
-  position: relative;
-  margin-bottom: 20rpx;
-}
-
-.image image {
-  width: 100%;
-  height: 100%;
-}
-
-.image-info {
-  position: absolute;
-  bottom: 0;
-  line-height: 2.6rem;
-  height: 2.6rem;
-  width: calc(100% - 20rpx);
-  background: rgba(0, 0, 0, 0.247);
-  color: #fff;
-  padding: 0 10rpx;
+.list {
+  padding: 20rpx;
   display: flex;
-  justify-content: space-between;
-  font-size: 24rpx;
+  flex-wrap: wrap;
+}
+
+.list .image-list {
+  flex: 1;
+}
+
+.image-list+.image-list {
+  margin-left: 20rpx;
 }

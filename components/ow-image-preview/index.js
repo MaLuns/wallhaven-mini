@@ -10,7 +10,14 @@ Component({
       type: Array,
       value: () => []
     },
-    index: 0
+    index: {
+      type: Number,
+      value: 0
+    },
+    type: {
+      type: String,
+      value: "image"
+    }
   },
   data: {
     previewIndex: 0,
@@ -27,6 +34,8 @@ Component({
         this.setData({
           previewIndex: index,
           previewItem: list[index]
+        }, () => {
+          this.scrollTo(index)
         })
       }
     },
@@ -38,12 +47,12 @@ Component({
         context: this
       })
     },
-    close: function () {
+    close() {
       this.setData({
         show: false
       })
     },
-    change: function (e) {
+    change(e) {
       const index = e.target.dataset.index;
       this.setData({
         previewIndex: index,
@@ -137,12 +146,6 @@ Component({
           }
         })
 
-      })
-    },
-    shareImage() {
-      toast.primary({
-        message: '功能开发中',
-        context: this
       })
     }
   }

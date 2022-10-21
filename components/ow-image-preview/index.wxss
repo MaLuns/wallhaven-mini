@@ -16,7 +16,7 @@
 }
 
 .big-image.blur {
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(30px);
 }
 
 .close {
@@ -32,7 +32,7 @@
   height: 275rpx;
   width: calc(100% - 40rpx);
   position: absolute;
-  bottom: 120rpx;
+  bottom: 80px;
   padding-left: 20rpx;
   padding-right: 20rpx;
   padding-bottom: constant(safe-area-inset-bottom);
@@ -50,7 +50,7 @@
 }
 
 .preview-list image.active {
-  border: 2px solid rgb(226, 226, 226);
+  border: 2px solid #b2cce9;
 }
 
 .preview-list image+image {
@@ -59,10 +59,8 @@
 
 .image-btns {
   position: absolute;
-  bottom: 0;
+  bottom: 20px;
   width: 100%;
-  height: 80rpx;
-  line-height: 80rpx;
   padding-bottom: constant(safe-area-inset-bottom);
   padding-bottom: env(safe-area-inset-bottom);
   z-index: 999;
@@ -71,11 +69,15 @@
 }
 
 
-.image-btns view {
+.image-btns view,
+.image-btns button {
   color: #fff;
+  padding: 0 20px;
   font-weight: bold;
-  padding: 0 40rpx;
+  line-height: 40px;
   border-radius: 3px;
-  background-color: rgba(0, 0, 0, 0.301);
+  background-color: #2d8cf0;
   font-size: .9em;
+  width: auto;
+  margin: 0;
 }

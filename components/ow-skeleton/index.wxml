@@ -1,0 +1,1 @@
+<view class="skeleton {{type}}" style="height: {{height}};width: {{width}};"></view>

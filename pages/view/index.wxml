@@ -1,0 +1,5 @@
+<ow-custom-navigation color="#fff" backgroundColor="#ffffff00">
+  <view class="close" bindtap="close">←</view>
+</ow-custom-navigation>
+
+<image mode="aspectFill" class="big-image" src="{{src}}"></image>

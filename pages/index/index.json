@@ -8,6 +8,9 @@
     "ow-image-preview": "/components/ow-image-preview/index"
   },
   "navigationStyle": "custom",
-  "onReachBottomDistance": 500,
-  "enablePullDownRefresh": true
+  "onReachBottomDistance": 800,
+  "navigationBarTextStyle": "white",
+  "backgroundColor": "#000",
+  "backgroundColorBottom": "#000",
+  "backgroundColorTop": "#000"
 }

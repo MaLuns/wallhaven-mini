@@ -1,6 +1,9 @@
 const app = getApp();
 
 Component({
+  options: {
+    multipleSlots: true 
+  },
   properties: {
     title: {
       type: String,
@@ -26,6 +29,15 @@ Component({
       type: String,
       value: "#fff"
     } //背景色
+    ,
+    color: {
+      type: String,
+      value: "#000"
+    },
+    isblock: {
+      type: Boolean,
+      value: true
+    }
   },
   data: {
     statusBarHeight: 24,

@@ -1,9 +1,11 @@
-<view bindtap="changeSearchPlan">
-  <icon class="icon-search" color="#000"  type="search" size="20"></icon>
+<view bindtap="changeSearchPlan" class="search-btn">
+  <icon class="icon-search" color="#fff" type="search" size="32"></icon>
 </view>
-<view bindtap="changeSearchPlan" catchtouchmove="true" class="search-mask {{show?'show':'' }}"></view>
-<view class="search-plan {{show?'show':'' }}" catchtouchmove="true">
+<view catchtap="changeSearchPlan" class="search-mask {{show?'show':'' }}"></view>
+<view class="search-plan {{show?'show':'' }}">
   <slot></slot>
-  <view class="search-btn">
+  <view class="search-btn-submit" catchtap="onSearch">
+    <icon color="#a5a5a5" type="search" size="20"></icon>
+    查询
   </view>
 </view>

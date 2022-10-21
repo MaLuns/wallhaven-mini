@@ -1,36 +1,61 @@
-const {
-  getSearch
-} = require('../../lib/api')
-const {
-  byte
-} = require('../../lib/util')
+const { getSearch } = require('../../lib/api')
 
-const search = {
+const defSearch = {
   categories: '',
-  ratios: "9x16,10x16,9x18,",
+  sorting: 'favorites',
+  ratios: "portrait",
 }
 
+const defMetaInfo = {
+  current_page: 0,
+  last_page: 1
+}
+
+let search = {
+  ...defSearch
+}
 let metaInfo = {
-  current_page: 0
+  ...defMetaInfo
 }
 
 Page({
   data: {
     title: '',
+    last_page: 1,
     search: {
-      categories: [{
-        label: '通用',
-        checked: true
-      }, {
-        label: '动漫',
-      }, {
-        label: '人物',
-      }],
       purity: [{
         label: 'SWF',
         checked: true
       }, {
         label: 'Sketchy',
+      }],
+      ratios: [{
+        label: '全部',
+        value: 'portrait',
+        checked: true
+      }, {
+        label: '9x16',
+        value: '9x16',
+      }, {
+        value: '10x16',
+        label: '10x16',
+      }, {
+        value: '9x18',
+        label: '9x18',
+      }],
+      sorting: [{
+        label: '收藏',
+        checked: true,
+        value: 'favorites'
+      }, {
+        label: '最新',
+        value: 'date_added'
+      }, {
+        label: '最热',
+        value: 'hot'
+      }, {
+        label: '查看',
+        value: 'views'
       }],
       order: [{
         label: '降序',
@@ -41,74 +66,115 @@ Page({
         value: 'asc'
       }]
     },
-    list_left: [],
-    list_right: [],
+    form: {
+      q: '',
+      page: 1
+    },
+    // 预览模式
+    previewShow: false,
+    previewIndex: 0,
+    previewList: [],
   },
   onLoad(options) {
     let {
       categories,
       title
     } = options
+
+    this.title = title
     this.setData({
       title
     })
 
-    search.categories = categories
-    this.getList()
+    search = {
+      ...defSearch,
+      categories
+    }
+    metaInfo = {
+      ...defMetaInfo
+    }
+  },
+  onReady() {
+    this.imageList = this.selectComponent("#image-list")
+    this.reset()
   },
   onPullDownRefresh() {
-    metaInfo.current_page = 0
-    this.data.list_left = []
-    this.data.list_right = []
-    this.getList().then(_ => {
+    this.reset()
+  },
+  onReachBottom() {
+    if (metaInfo.current_page < metaInfo.last_page) {
+      this.getList()
+    }
+  },
+  onPreviewList(e) {
+    const { index, list } = e.detail;
+    this.setData({
+      previewShow: true,
+      previewIndex: index,
+      previewList: list
+    })
+  },
+  onClose() {
+    wx.navigateBack({})
+  },
+  reset() {
+    metaInfo = {
+      ...defMetaInfo
+    }
+    this.getList(true).then(_ => {
       wx.stopPullDownRefresh()
     })
   },
-  onReachBottom: function () {
-    this.getList()
-  },
-  onPreview(e) {
-    const {
-      src
-    } = e.detail
-    wx.previewImage({
-      urls: [src],
-    })
-  },
-  close() {
-    wx.navigateBack({})
-  },
-  getList() {
-    wx.showLoading({
-      mask: true,
-      title: '加载中',
-    })
-    return getSearch({
+  getList(reset = false) {
+    let res = getSearch({
       ...search,
-      page: metaInfo.current_page + 1
+      page: search.page ? search.page : metaInfo.current_page + 1
     }).then(res => {
-      let {
-        data = [], meta = {}
-      } = res.data
-      let {
-        list_left,
-        list_right
-      } = this.data
-      data.forEach((item, index) => {
-        item.file_size_str = byte(item.file_size)
-        if (index % 2 == 0) {
-          list_left.push(item)
-        } else {
-          list_right.push(item)
-        }
-      });
+      if (res) {
+        let {
+          data = [], meta = {}
+        } = res.data
 
-      this.setData({
-        list_left,
-        list_right
-      })
-      metaInfo = meta
-      wx.hideLoading();
+        this.imageList.add(data, reset)
+
+        this.setData({
+          title: this.title + `（${meta.total}）`,
+          last_page: meta.last_page
+        })
+        metaInfo = meta
+      }
     })
+
+    delete this.data.form.page
+    delete search.page
+    return res
+  },
+  onFormChagne(e) {
+    let {
+      type
+    } = e.currentTarget.dataset;
+    let val = e.detail.value
+    switch (type) {
+      case 'q':
+        this.data.form.q = val.replace(/&/g, '').replace(/purity/g, '')
+        break;
+      case 'ratios':
+        this.data.form.ratios = val.length ? val.join(',') : 'portrait'
+        break;
+      case 'page':
+      case 'sorting':
+      case 'order':
+        this.data.form[type] = val
+        break;
+      default:
+        break;
+    }
+  },
+  onSearch() {
+    search = {
+      ...search,
+      ...this.data.form
+    }
+    this.reset()
   }
 })
