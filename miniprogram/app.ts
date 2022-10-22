@@ -2,8 +2,17 @@
 App({
   globalData: {
     themeColor: '#4e8ce8',
+    headerBtnPosi: {},
+    systemInfo: {}
   },
   onLaunch() {
+    this.globalData.headerBtnPosi = wx.getMenuButtonBoundingClientRect()
+    wx.getSystemInfo({
+      success: (res) => {
+        this.globalData.systemInfo = res
+      }
+    })
+
     wx.cloud.init({
       env: "prod-2gzbko445547872d"
     })

@@ -2,7 +2,7 @@ const app = getApp();
 
 Component({
   options: {
-    multipleSlots: true 
+    multipleSlots: true
   },
   properties: {
     title: {
@@ -60,16 +60,6 @@ Component({
         navBarSpaceHeight: this.data.statusBarHeight + this.data.navigateContentHeight
       })
     })
-  },
-  methods: {
-
   }
 })
 
-app.globalData.headerBtnPosi = wx.getMenuButtonBoundingClientRect()
-
-wx.getSystemInfo({
-  success: function (res) {
-    app.globalData.systemInfo = res
-  }
-})

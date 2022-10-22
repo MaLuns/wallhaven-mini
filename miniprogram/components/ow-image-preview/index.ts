@@ -84,7 +84,7 @@ Component({
         urls: [this.data.previewItem.path],
       })
     },
-    checkAuthorize() {
+    /* checkAuthorize() {
       return new Promise<void>((resolve) => {
         wx.getSetting({
           success: (res) => {
@@ -119,7 +119,7 @@ Component({
           }
         })
       })
-    },
+    }, */
     saveImage() {
       toast.primary({
         message: '功能开发中，请点击预览长按保存',
