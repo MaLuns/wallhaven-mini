@@ -1,0 +1,36 @@
+.toast {
+  position     : fixed;
+  top          : 180rpx;
+  left         : 0;
+  right        : 0;
+  margin       : 0 auto;
+  width        : fit-content;
+  color        : #fff;
+  z-index      : 9999;
+  border-radius: 6px;
+  padding      : 10px 20px;
+  transition   : all .3s;
+  opacity      : 0;
+  transform    : scale(0);
+
+  &.show {
+    opacity  : 1;
+    transform: scale(1);
+  }
+
+  &.primary {
+    background-color: #1989fa;
+  }
+
+  &.success {
+    background-color: #07c160;
+  }
+
+  &.danger {
+    background-color: #ee0a24;
+  }
+
+  &.warning {
+    background-color: #ff976a;
+  }
+}

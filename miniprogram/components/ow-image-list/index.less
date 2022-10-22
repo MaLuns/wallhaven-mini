@@ -1,0 +1,13 @@
+.list {
+  padding  : 20rpx;
+  display  : flex;
+  flex-wrap: wrap;
+
+  .image-list {
+    flex: 1;
+
+    &+.image-list {
+      margin-left: 20rpx;
+    }
+  }
+}

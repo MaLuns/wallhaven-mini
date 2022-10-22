@@ -1,0 +1,44 @@
+.share-reward-header {
+  width   : 100%;
+  position: fixed;
+  z-index : 800;
+  top     : 0;
+
+  &.blur {
+    backdrop-filter        : blur(15rpx);
+    -webkit-backdrop-filter: blur(15rpx);
+  }
+
+  .navbar {
+    position: relative;
+  }
+
+  .navbar-content {
+    display    : flex;
+    align-items: center;
+    position   : relative;
+  }
+
+  .go-back {
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    box-sizing     : border-box;
+    z-index        : 1000;
+    padding        : 0 20rpx;
+  }
+
+  .navbar-title {
+    text-align   : center;
+    white-space  : nowrap;
+    overflow     : hidden;
+    text-overflow: ellipsis;
+    font-size    : 33rpx;
+    font-weight  : bolder;
+    z-index      : 999;
+    position     : absolute;
+    left         : 50%;
+    transform    : translateX(-50%);
+    max-width    : 350rpx;
+  }
+}
