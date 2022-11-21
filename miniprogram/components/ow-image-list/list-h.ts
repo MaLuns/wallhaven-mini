@@ -36,7 +36,7 @@ Component({
         ['list[' + this.data.list.length + ']']: newList
       })
     },
-    viewImage(e: { target: { dataset: { id: string } } }) {
+    viewImage(e: WechatMiniprogram.BaseEvent) {
       const { id } = e.target.dataset;
 
       let index = this.data.catchList.findIndex(item => item.id === id)

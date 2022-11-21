@@ -112,7 +112,7 @@ Page({
       this.getList()
     }
   },
-  onPreviewList(e: { detail: { index: any; list: any } }) {
+  onPreviewList(e: WechatMiniprogram.CustomEvent) {
     const { index, list } = e.detail;
     this.setData({
       previewShow: true,
@@ -157,8 +157,8 @@ Page({
 
     return res
   },
-  onFormChagne(e: { currentTarget: { dataset: { type: string } }; detail: { value: string | Array<any> } }) {
-    let { type } = e.currentTarget.dataset;
+  onFormChagne(e: WechatMiniprogram.CustomEvent) {
+    let type = <string>e.currentTarget.dataset.type;
     let val = e.detail.value
     switch (type) {
       case 'q':

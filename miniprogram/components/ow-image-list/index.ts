@@ -81,8 +81,8 @@ Component({
           })
       })
     },
-    viewImage(e: { target: { dataset: { id: string } } }) {
-      const { id } = e.target.dataset;
+    viewImage(e: WechatMiniprogram.BaseEvent) {
+      const id: string = e.target.dataset.id;
 
       let index = this.data.catchList.findIndex(item => item.id === id)
       let minIndex = Math.max(index - 20, 0)

@@ -52,14 +52,14 @@ Component({
         show: false
       })
     },
-    change(e: { target: { dataset: { index: number } } }) {
+    change(e: WechatMiniprogram.BaseEvent) {
       const index = e.target.dataset.index;
       this.setData({
         previewIndex: index,
         previewItem: this.data.list[index]
       })
     },
-    changeBigImage(e: { detail: { current: number } }) {
+    changeBigImage(e: WechatMiniprogram.CustomEvent) {
       let current = e.detail.current
       if (current !== this.data.previewIndex) {
         this.setData({

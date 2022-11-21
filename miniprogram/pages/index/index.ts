@@ -59,7 +59,7 @@ Page({
       this.getList()
     }
   },
-  onPreviewList(e: { detail: { index: any; list: any } }) {
+  onPreviewList(e: WechatMiniprogram.CustomEvent) {
     const { index, list } = e.detail;
     this.setData({
       previewShow: true,
