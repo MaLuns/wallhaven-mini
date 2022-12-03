@@ -16,6 +16,7 @@ App({
     wx.cloud.init({
       env: "prod-2gzbko445547872d"
     })
+
     const updateManager = wx.getUpdateManager()
     updateManager.onCheckForUpdate(function (res) {
       if (res.hasUpdate) {

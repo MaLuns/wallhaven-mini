@@ -3,9 +3,7 @@
     <view class="slot">
       <slot name="label"></slot>
     </view>
-    <view class="default">
-      {{label}}
-    </view>
+    <view class="default">{{label}}</view>
   </view>
   <view class="search-item-value">
     <slot></slot>

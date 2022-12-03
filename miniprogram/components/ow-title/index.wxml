@@ -1,0 +1,5 @@
+<view class="ow-title">
+    <view class="tips"></view>
+    <view class="title">{{ title }}</view>
+    <view class="tips right"></view>
+</view>

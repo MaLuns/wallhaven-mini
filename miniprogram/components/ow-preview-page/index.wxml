@@ -1,0 +1,5 @@
+<page-container show="{{show}}" z-index="1001" bind:afterleave="onAfterLeave">
+    <view style="width: 100vw;  height: 100vh">
+        <slot></slot>
+    </view>
+</page-container>

@@ -33,6 +33,10 @@ export const getSearch = (pra = {}): Promise<ICloud.CallContainerResult | null> 
 
 export const getInfo = (pra = {}): Promise<ICloud.CallContainerResult | null> => https('/w?' + objToUrl(pra))
 
+/**
+ * 检查云托管启动
+ * @returns 
+ */
 export const checkContainer = (): Promise<boolean> => {
   return new Promise((resolve) => {
     let count = 0

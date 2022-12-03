@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "ow-custom-navigation": "/components/ow-custom-navigation/index"
+  },
+  "navigationStyle": "custom",
+  "navigationBarTextStyle": "white",
+  "backgroundColor": "#000",
+  "backgroundColorBottom": "#000",
+  "backgroundColorTop": "#000"
+}

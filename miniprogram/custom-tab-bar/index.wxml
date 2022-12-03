@@ -1,0 +1,6 @@
+<view class="tabbar {{show?'show':'hide'}}">
+    <view class="tabbar-item {{selected === index ?'activce':''}}" wx:for="{{tabbars}}" wx:key="index" bind:tap="handleClick" data-index="{{ index }}" data-path="{{ item.pagePath }}">
+        <view class="{{item.icon}}"></view>
+    </view>
+    <!-- <view class="tabbar_bar" style="transform: translate({{selected*70}}px);"></view> -->
+</view>

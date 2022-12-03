@@ -1,23 +1,23 @@
 .search-btn {
   position        : fixed;
-  right           : 50rpx;
-  padding         : 10rpx;
+  right           : 20px;
+  padding         : 10px;
   bottom          : constant(safe-area-inset-bottom);
   bottom          : env(safe-area-inset-bottom);
-  margin-bottom   : 50rpx;
+  margin-bottom   : 20px;
   background-color: #9aacbb;
   border-radius   : 50%;
-  box-shadow      : 0 0 20rpx 0 #00000067;
+  box-shadow      : 0 0 10px 0 #1616169d;
 }
 
 .search-plan {
   position        : fixed;
   bottom          : 0;
   z-index         : 999;
-  width           : calc(100% - 80rpx);
-  padding         : 20rpx 40rpx;
-  background-color: #272727;
-  color           : #a5a5a5;
+  width           : calc(100% - 40px);
+  padding         : 0 20px 10px;
+  background-color: #202020;
+  color           : #c9c9c9;
   overflow        : hidden;
   transition      : all .3s;
   transform       : translateY(100%);
@@ -25,6 +25,7 @@
   opacity         : 0;
   padding-bottom  : constant(safe-area-inset-bottom);
   padding-bottom  : env(safe-area-inset-bottom);
+  font-size       : .9rem;
 
   &.show {
     opacity  : 1;
@@ -38,8 +39,8 @@
   top             : 0;
   height          : 100vh;
   width           : 100vw;
-  background-color: rgba(0, 0, 0, 0.74);
   opacity         : 0;
+  background-color: rgba(0, 0, 0, 0.774);
   transition      : opacity .3s;
   transform       : scaleY(0);
   transform-origin: top;
@@ -55,13 +56,13 @@
 }
 
 .search-btn-submit {
-  margin          : 20rpx;
-  padding         : 10px 20px;
-  background-color: #00000077;
+  margin          : 4px;
+  padding         : 10px;
+  background-color: rgb(109, 121, 235);
   box-shadow      : 0 0 20rpx 0 rgba(28, 22, 61, 0.596);
   border-radius   : 6px;
   display         : flex;
   align-items     : center;
   justify-content : center;
-  color           : #a5a5a5;
+  color           : #fff;
 }

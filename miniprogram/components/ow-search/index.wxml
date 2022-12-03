@@ -1,11 +1,12 @@
-<view bindtap="changeSearchPlan" class="search-btn">
+<view bindtap="changeSearchPlan" class="search-btn" wx:if="{{btn}}">
   <icon class="icon-search" color="#fff" type="search" size="32"></icon>
 </view>
 <view catchtap="changeSearchPlan" class="search-mask {{show?'show':'' }}"></view>
 <view class="search-plan {{show?'show':'' }}">
+  <ow-title title="筛选"></ow-title>
   <slot></slot>
   <view class="search-btn-submit" catchtap="onSearch">
-    <icon color="#a5a5a5" type="search" size="20"></icon>
+    <text class="icon-sousuo" style="margin-right: 5px;"></text>
     查询
   </view>
 </view>

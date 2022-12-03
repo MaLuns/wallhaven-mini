@@ -1,0 +1,61 @@
+.ow-title {
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    @bg-color      : #3fa0ce;
+
+    .title {
+        font-weight: bold;
+        font-size  : 18px;
+        margin     : 20px;
+    }
+
+    .tips {
+        width           : 100px;
+        height          : 2px;
+        background-color: @bg-color;
+        border-radius   : 2px;
+        position        : relative;
+        top             : -3px;
+
+        &::before {
+            content         : '';
+            width           : 26px;
+            height          : 2px;
+            background-color: @bg-color;
+            border-radius   : 6px;
+            position        : absolute;
+            top             : 6px;
+            right           : 0;
+        }
+
+        &::after {
+            content         : '';
+            width           : 14px;
+            height          : 2px;
+            background-color: @bg-color;
+            border-radius   : 6px;
+            position        : absolute;
+            top             : 6px;
+            right           : 30px;
+        }
+
+        &.right {
+            width       : 70px;
+            margin-right: 30px;
+
+            &::before {
+                width: 36px;
+                left : 0;
+                right: auto;
+            }
+
+            &::after {
+                top  : 0;
+                left : 75px;
+                width: 15px;
+                right: auto;
+            }
+        }
+    }
+}

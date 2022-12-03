@@ -58,3 +58,9 @@ interface Form {
     sorting?: string,
     order?: string
 }
+
+interface NavItem {
+    icon?: string,
+    pagePath?: string,
+    text?: string
+}

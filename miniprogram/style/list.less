@@ -1,0 +1,56 @@
+.one-list {
+    background-color: #333335;
+    color           : #b5b5b5;
+
+    .one-item {
+        padding        : 0 1rem;
+        line-height    : 3;
+        display        : flex;
+        justify-content: space-between;
+        align-items    : center;
+
+        +.one-item {
+            border-top: .5px solid #393d42bf;
+        }
+
+        .content,
+        .action {
+            flex: 1;
+        }
+
+        .action {
+            text-align: right;
+        }
+
+        &.arrow {
+            &::after {
+                font-family: "iconfont";
+                content    : "\e743";
+                font-weight: bold;
+                margin-left: 10px;
+            }
+        }
+
+        text[class*="icon"] {
+            margin-right: 10rpx;
+            display     : inline-block;
+            width       : 1.6em;
+            text-align  : center;
+        }
+    }
+
+    &.sm-border {
+        .one-item {
+            padding: 0;
+            margin : 0 16px;
+        }
+    }
+
+    &.card-menu {
+        margin-left  : 16px;
+        margin-right : 16px;
+        border-radius: 8px;
+        overflow     : hidden;
+        box-shadow   : 0 0 4px 0px #000000b3;
+    }
+}

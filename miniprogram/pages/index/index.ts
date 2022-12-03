@@ -1,4 +1,6 @@
+import { changeTab } from '../../custom-tab-bar/util'
 import { getSearch, checkContainer } from '../../lib/api'
+import watcher from '../../lib/watcher'
 
 const search = {
   categories: '111',
@@ -22,27 +24,19 @@ Page({
     previewShow: false,
     previewIndex: 0,
     previewList: [],
-    // 导航
-    nav: [
-      {
-        label: '常规',
-        value: '100'
-      },
-      {
-        label: '动漫',
-        value: '010'
-      },
-      {
-        label: '人物',
-        value: '001'
-      },
-      {
-        label: '全部',
-        value: '111'
-      }
-    ]
+  },
+  watch: {
+    previewShow(val: Boolean) {
+      this.getTabBar().setData({
+        show: !val
+      })
+    }
+  },
+  onShow() {
+    changeTab.call(this)
   },
   onLoad() {
+    watcher(this)
     checkContainer().then(() => {
       this.getData('top', {
         sorting: "toplist",
@@ -59,6 +53,7 @@ Page({
       this.getList()
     }
   },
+  // 打开预览页
   onPreviewList(e: WechatMiniprogram.CustomEvent) {
     const { index, list } = e.detail;
     this.setData({
@@ -67,6 +62,7 @@ Page({
       previewList: list
     })
   },
+  // 获取列表
   async getList() {
     let res = await getSearch({
       ...search,
@@ -82,6 +78,7 @@ Page({
       metaInfo = meta
     }
   },
+  // 获取绑定数据
   async getData(type: string, par = {}) {
     const res = await getSearch({
       ...search,

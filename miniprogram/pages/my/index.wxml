@@ -1,0 +1,22 @@
+<view class="user-info"></view>
+<view class="one-card"></view>
+<view class="one-list sm-border card-menu">
+    <view class="one-item arrow">
+        <view class='content'>
+            <text class='icon-yingyong'></text>
+            <text class='text-grey'>Github</text>
+        </view>
+    </view>
+    <view class="one-item arrow">
+        <view class='content'>
+            <text class='icon-wode'></text>
+            <text class='text-grey'>关于</text>
+        </view>
+    </view>
+    <view class="one-item arrow">
+        <view class='content'>
+            <text class='icon-shouye'></text>
+            <text class='text-grey'>意见反馈</text>
+        </view>
+    </view>
+</view>

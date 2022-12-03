@@ -1,22 +1,15 @@
 <ow-custom-navigation title="One Wallhaven" blur="true" color="#fff" backgroundColor="#ffffff00"></ow-custom-navigation>
-<view class="tips">免责申明：壁纸均源于 wallhaven.cc，本程序仅供学习</view>
-<view class="nav">
-  <navigator url="/pages/categorie/index?title={{item.label}}&categories={{item.value}}" class="nav-item" wx:for="{{nav}}" wx:key="index">
-    {{item.label}}
-  </navigator>
-</view>
-<view class="title">热榜</view>
+<ow-title title="热榜"></ow-title>
 <ow-image-list-h id="hotList" bindclick="onPreviewList" data-type="hotList" height="{{350}}"></ow-image-list-h>
-<view class="title">周榜</view>
+<ow-title title="周榜"></ow-title>
 <ow-image-list-h id="topList" bindclick="onPreviewList" data-type="topList" height="{{350}}"></ow-image-list-h>
-<view class="title">收藏榜</view>
+<ow-title title="收藏榜"></ow-title>
 <ow-image-list-h id="favoritesList" bindclick="onPreviewList" data-type="favoritesList" height="{{350}}"></ow-image-list-h>
 <!-- <view class="title">随机</view>
 <ow-image-list-h bindclick="onPreviewList" data-type="randomList" height="{{350}}" list="{{randomList}}"></ow-image-list-h> -->
-<view class="title">查看榜</view>
+<ow-title title="查看榜"></ow-title>
 <ow-image-list id="image-list" bindclick="onPreviewList"></ow-image-list>
-<page-container show="{{previewShow}}" z-index="1001">
-  <view style="width: 100vw;  height: 100vh">
-    <ow-image-preview model:show="{{previewShow}}" list="{{previewList}}" index="{{previewIndex}}"></ow-image-preview>
-  </view>
-</page-container>
+<!-- 预览 -->
+<ow-preview-page model:show="{{previewShow}}">
+  <ow-image-preview model:show="{{previewShow}}" list="{{previewList}}" index="{{previewIndex}}"></ow-image-preview>
+</ow-preview-page>
