@@ -81,7 +81,8 @@ Component({
           })
       })
     },
-    viewImage(e: WechatMiniprogram.BaseEvent) {
+    // 点击预览
+    handleViewImage(e: WechatMiniprogram.BaseEvent) {
       const id: string = e.target.dataset.id;
 
       let index = this.data.catchList.findIndex(item => item.id === id)
@@ -95,6 +96,61 @@ Component({
         index: newIndex,
         list: newList
       })
+    },
+    // 长按 收藏
+    handleLongPress(e: WechatMiniprogram.BaseEvent) {
+      const id: string = e.target.dataset.id;
+      const item = this.data.catchList.find(item => item.id === id)
+      this.triggerEvent('long', item)
+
+      /*
+      const that = this
+      wx.vibrateShort({ type: 'heavy' })
+      wx.getStorage({
+        key: 'favorites',
+        success(res) {
+          let favorites = res.data
+
+          if (favorites[id]) {
+            delete favorites[id]
+
+            wx.setStorage({
+              key: 'favorites',
+              data: favorites
+            })
+
+            toast.warning({
+              message: '取消收藏',
+              context: that
+            })
+          } else {
+            wx.setStorage({
+              key: 'favorites',
+              data: {
+                ...favorites,
+                [id]: item
+              }
+            })
+            toast.success({
+              message: '收藏成功',
+              context: that
+            })
+          }
+        },
+        fail() {
+          toast.success({
+            message: '收藏成功',
+            context: that
+          })
+
+          wx.setStorage({
+            key: 'favorites',
+            data: {
+              [id]: item
+            }
+          })
+        }
+      }) */
     }
   }
 })

@@ -12,26 +12,25 @@ Component({
     }
   },
   methods: {
-    changeSearchPlan() {
+    showTabBar() {
       const bar = this.getTabBar()
       if (bar) {
         bar.setData({
           show: this.data.show
         })
       }
+    },
+    changeSearchPlan() {
+      this.showTabBar()
       this.setData({
         show: !this.data.show
       })
     },
     onSearch() {
-      this.setData({
-        show: false
-      })
-      wx.vibrateShort({
-        type: 'heavy',
-      })
+      wx.vibrateShort({ type: 'heavy' })
+      this.showTabBar()
+      this.setData({ show: false })
       this.triggerEvent('search')
-
     }
   }
 })

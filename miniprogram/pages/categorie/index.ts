@@ -1,6 +1,6 @@
 import { getSearch } from '../../lib/api'
-import { changeTab } from "../../custom-tab-bar/util";
-import watcher from '../../lib/watcher'
+import favorites from '../../lib/mixins/favorites'
+import preview from '../../lib/mixins/preview/index'
 
 const defSearch = {
   categories: '111',
@@ -26,7 +26,9 @@ let metaInfo: Meta = {
 }
 
 let imageList: WechatMiniprogram.Component.TrivialInstance;
+
 Page({
+  behaviors: [favorites, preview],
   title: '全部',
   data: {
     title: '',
@@ -59,23 +61,6 @@ Page({
       q: '',
       page: 1
     } as Form,
-    // 预览模式
-    previewShow: false,
-    previewIndex: 0,
-    previewList: [],
-  },
-  watch: {
-    previewShow(val: Boolean) {
-      this.getTabBar().setData({
-        show: !val
-      })
-    }
-  },
-  onShow() {
-    changeTab.call(this)
-  },
-  onLoad() {
-    watcher(this)
   },
   onReady() {
     imageList = this.selectComponent("#image-list")
@@ -88,15 +73,6 @@ Page({
     if (metaInfo.current_page < metaInfo.last_page) {
       this.getList()
     }
-  },
-  // 打开预览页
-  onPreviewList(e: WechatMiniprogram.CustomEvent) {
-    const { index, list } = e.detail;
-    this.setData({
-      previewShow: true,
-      previewIndex: index,
-      previewList: list
-    })
   },
   // 打开查询面板
   openSearch() {

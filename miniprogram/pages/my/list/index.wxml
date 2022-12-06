@@ -1,0 +1,13 @@
+<ow-custom-navigation bindclose="handleBack" showBack="{{true}}" title="{{title}}" blur="true" color="#fff" backgroundColor="#ffffff00"></ow-custom-navigation>
+
+<!-- 列表 -->
+<ow-image-list wx:if="{{show}}" id="image-list" bindlong="handleLong" bindclick="handlePreview"></ow-image-list>
+<view class="empty" wx:else>
+  未找到列表数据
+</view>
+
+<ow-bar-btn btns="{{btns}}"></ow-bar-btn>
+
+<!-- 预览 -->
+<include src="../../../lib/mixins/preview/index.wxml" />
+<ow-toast id="toast" />

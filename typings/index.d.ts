@@ -7,7 +7,6 @@ interface IAppOption {
     userInfoReadyCallback?: WechatMiniprogram.GetUserInfoSuccessCallback,
 }
 
-
 interface List {
     data: Array<ImageItem>,
     meta: Meta
@@ -52,6 +51,7 @@ interface Meta {
 
 interface Form {
     q?: string,
+    purity?: string,
     categories?: string,
     page?: number,
     ratios?: string,
@@ -63,4 +63,10 @@ interface NavItem {
     icon?: string,
     pagePath?: string,
     text?: string
+}
+
+declare enum ScrolStatus {
+    invisiable = 0,
+    pulling = 1,
+    release = 2
 }

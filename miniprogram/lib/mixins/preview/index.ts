@@ -1,0 +1,27 @@
+export default Behavior({
+  data: {
+    previewShow: false,
+    previewIndex: 0,
+    previewList: [],
+  },
+  observers: {
+    previewShow(val: Boolean) {
+      let tabBar = this.getTabBar()
+      if (tabBar)
+        tabBar.setData({
+          show: !val
+        })
+    }
+  },
+  methods: {
+    // 打开预览页
+    handlePreview(e: WechatMiniprogram.CustomEvent) {
+      const { index, list } = e.detail;
+      this.setData({
+        previewShow: true,
+        previewIndex: index,
+        previewList: list
+      })
+    },
+  }
+})

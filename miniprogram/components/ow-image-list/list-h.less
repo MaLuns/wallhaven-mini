@@ -1,3 +1,25 @@
 .scroll-view {
   white-space: nowrap;
 }
+
+.scroll-view-warp {
+  position: relative;
+}
+
+.scroll-view-more {
+  position  : absolute;
+  display   : inline-block;
+  width     : 1em;
+  top       : 50%;
+  font-size : 12px;
+  right     : 30px;
+  color     : rgb(158, 158, 158);
+  opacity   : 0;
+  transform : translateY(-50%) scale(.2);
+  transition: all .3s;
+
+  &.show {
+    opacity  : 1;
+    transform: translateY(-50%) scale(1);
+  }
+}

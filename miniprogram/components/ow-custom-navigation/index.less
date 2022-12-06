@@ -42,3 +42,23 @@
     max-width    : 350rpx;
   }
 }
+
+.default {
+  display: none;
+}
+
+.slot {
+  &:empty {
+    &+.default {
+      display: block;
+    }
+  }
+}
+
+.icon-back {
+  color           : #fff;
+  font-size       : 1.1rem;
+  background-color: rgba(0, 0, 0, 0.445);
+  padding         : 8px 16px;
+  border-radius   : 3px;
+}

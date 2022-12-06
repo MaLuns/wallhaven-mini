@@ -16,6 +16,7 @@
       "noUnusedParameters": true,
       "strict": true,
       "strictPropertyInitialization": true,
+      "moduleDetection":"force",
       "lib": ["ES2020"],
       "typeRoots": [
         "./typings"

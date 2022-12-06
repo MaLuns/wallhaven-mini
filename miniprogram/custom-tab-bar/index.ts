@@ -1,4 +1,4 @@
-import { tabbars } from "./util";
+import { tabbars, changeTab } from "./util";
 
 Component({
   options: {
@@ -6,7 +6,7 @@ Component({
   },
   data: {
     show: true,
-    selected: 0,
+    selected: -1,
     tabbars
   },
   methods: {
@@ -14,5 +14,15 @@ Component({
       let path = e.currentTarget.dataset.path;
       wx.switchTab({ url: path })
     }
+  },
+  lifetimes: {
+    ready() {
+      let index = changeTab.call(getCurrentPages()[0])
+      if (index > -1) {
+        this.setData({
+          selected: index
+        })
+      }
+    },
   }
 })

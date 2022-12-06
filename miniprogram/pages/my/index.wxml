@@ -1,22 +1,56 @@
-<view class="user-info"></view>
-<view class="one-card"></view>
-<view class="one-list sm-border card-menu">
-    <view class="one-item arrow">
-        <view class='content'>
-            <text class='icon-yingyong'></text>
-            <text class='text-grey'>Github</text>
-        </view>
-    </view>
-    <view class="one-item arrow">
-        <view class='content'>
-            <text class='icon-wode'></text>
-            <text class='text-grey'>关于</text>
-        </view>
-    </view>
-    <view class="one-item arrow">
-        <view class='content'>
-            <text class='icon-shouye'></text>
-            <text class='text-grey'>意见反馈</text>
-        </view>
-    </view>
+<image src='/images/bg.png' mode='widthFix' class='bg-img-new'></image>
+<view class="user-info">
+  <image src="/images/logo.svg" class="logo" mode="widthFix"></image>
+  <view class="app-name"> One-Wallhaven </view>
+  <text>{{v}}</text>
+  <text>最近更新：{{date}}</text>
 </view>
+<view class="user-nav one-card">
+  <view class="user-nav-item" data-type="favorites" bindtap="handleNav">
+    <text class="item-number" style="color:#9a65af">{{favorites}}</text>
+    <text class="item-title icon-shoucang">
+      <text>Favorites</text>
+    </text>
+  </view>
+  <!-- <view class="user-nav-item">
+    <text class="item-number" style="color:#ac8972">56</text>
+    <text class="item-title icon-xiazai">
+      <text>下载</text>
+    </text>
+  </view> -->
+  <view class="user-nav-item" data-type="historys" bindtap="handleNav">
+    <text class="item-number" style="color:#87a870">{{historys}}</text>
+    <text class="item-title icon-zuji">
+      <text>Historys</text>
+    </text>
+  </view>
+</view>
+<view class="one-list sm-border card-menu">
+  <view class="one-item arrow" data-link="https://github.com/MaLuns/wallhaven-mini" bindtap="handleCopyText">
+    <view class='content'>
+      <text class='icon-github'></text>
+      <text class='text-grey'>Github</text>
+    </view>
+  </view>
+  <view class="one-item arrow" bindtap="handleTipMoney">
+    <view class='content'>
+      <text class='icon-dashang-01'></text>
+      <text class='text-grey'>打赏</text>
+    </view>
+  </view>
+  <!-- <view class="one-item arrow">
+    <view class='content'>
+      <text class='icon-guanyu'></text>
+      <text class='text-grey'>关于</text>
+    </view>
+  </view> -->
+  <view class="one-item arrow">
+    <view class='content'>
+      <button type="default" class="btns" open-type="feedback">
+        <text class='icon-fankui'></text>
+        <text class='text-grey'>反馈</text>
+      </button>
+    </view>
+  </view>
+</view>
+<view class="copyright">Copyright © 2022 One-Wallhaven</view>

@@ -1,15 +1,16 @@
 <ow-custom-navigation title="One Wallhaven" blur="true" color="#fff" backgroundColor="#ffffff00"></ow-custom-navigation>
-<ow-title title="热榜"></ow-title>
-<ow-image-list-h id="hotList" bindclick="onPreviewList" data-type="hotList" height="{{350}}"></ow-image-list-h>
-<ow-title title="周榜"></ow-title>
-<ow-image-list-h id="topList" bindclick="onPreviewList" data-type="topList" height="{{350}}"></ow-image-list-h>
-<ow-title title="收藏榜"></ow-title>
-<ow-image-list-h id="favoritesList" bindclick="onPreviewList" data-type="favoritesList" height="{{350}}"></ow-image-list-h>
-<!-- <view class="title">随机</view>
-<ow-image-list-h bindclick="onPreviewList" data-type="randomList" height="{{350}}" list="{{randomList}}"></ow-image-list-h> -->
+
+<block wx:for="{{list}}" wx:key="type">
+  <ow-title title="{{item.title}}"></ow-title>
+  <ow-image-list-h bindlong="handleFavorites" bindclick="handlePreview" data-type="{{item.type}}" id="{{item.type}}" height="{{350}}"></ow-image-list-h>
+</block>
+
 <ow-title title="查看榜"></ow-title>
-<ow-image-list id="image-list" bindclick="onPreviewList"></ow-image-list>
+<ow-image-list id="image-list" bindlong="handleFavorites" bindclick="handlePreview"></ow-image-list>
+
 <!-- 预览 -->
-<ow-preview-page model:show="{{previewShow}}">
+<include src="../../lib/mixins/preview/index.wxml" />
+<!-- <ow-preview-page model:show="{{previewShow}}">
   <ow-image-preview model:show="{{previewShow}}" list="{{previewList}}" index="{{previewIndex}}"></ow-image-preview>
-</ow-preview-page>
+</ow-preview-page> -->
+<ow-toast id="toast" />

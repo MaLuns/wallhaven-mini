@@ -6,7 +6,12 @@ Component({
     },
   },
   methods: {
-    onAfterLeave() {
+    handleClose() {
+      this.setData({
+        show: false
+      })
+    },
+    handleAfterLeave() {
       this.setData({
         show: false
       })

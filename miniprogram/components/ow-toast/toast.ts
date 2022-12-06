@@ -16,8 +16,6 @@ interface ToastOptions {
   onClose?: () => void;
 }
 
-let queue: Array<WechatMiniprogram.Component.TrivialInstance> = [];
-
 const defaultOptions = {
   type: 'primary',
   mask: false,
@@ -52,14 +50,12 @@ function Toast(toastOptions: ToastOptions) {
     });
   };
 
-  queue.push(toast);
   toast.setData(options);
   clearTimeout(toast.timer);
 
   if (options.duration != null && options.duration > 0) {
     toast.timer = setTimeout(() => {
       toast.clear();
-      queue = queue.filter((item) => item !== toast);
     }, options.duration);
   }
 
@@ -67,11 +63,19 @@ function Toast(toastOptions: ToastOptions) {
 
 }
 
-const createMethod = (type: string) => (options = {}) => Toast({ type, ...options })
+const createMethod = (type: string) =>
+  (options: ToastOptions | string) => {
+    if (typeof options === 'string') {
+      options = {
+        message: options
+      }
+    }
+    Toast({ type, ...options })
+  }
 
 Toast.primary = createMethod('primary')
 Toast.success = createMethod('success')
 Toast.danger = createMethod('danger')
 Toast.warning = createMethod('warning')
 
-module.exports = Toast
+export default Toast

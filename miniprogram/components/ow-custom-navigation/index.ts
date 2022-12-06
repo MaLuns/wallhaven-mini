@@ -2,37 +2,39 @@ const app = getApp();
 
 Component({
   options: {
-    multipleSlots: true
+    multipleSlots: true,
+    addGlobalClass: true
   },
   properties: {
+    // 标题
     title: {
       type: String,
       value: ''
-    }, //标题
-    backUrl: {
-      type: String,
-      value: ""
-    }, //返回键跳转地址
-    homeUrl: {
-      type: String,
-      value: ""
-    }, //首页跳转地址
+    },
+    // 是否显示返回键
     showBack: {
       type: Boolean,
       value: false
-    }, //是否显示返回键
+    },
+    // 高斯模糊
     blur: {
       type: Boolean,
       value: false
     },
+    // 背景色
     backgroundColor: {
       type: String,
       value: "#fff"
-    } //背景色
-    ,
+    },
+    // 字体色
     color: {
       type: String,
       value: "#000"
+    },
+    // 层级
+    zIndex: {
+      type: Number,
+      value: 800
     },
     isblock: {
       type: Boolean,
@@ -60,6 +62,11 @@ Component({
         navBarSpaceHeight: this.data.statusBarHeight + this.data.navigateContentHeight
       })
     })
+  },
+  methods: {
+    handleClose() {
+      this.triggerEvent('close')
+    }
   }
 })
 

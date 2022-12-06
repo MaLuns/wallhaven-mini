@@ -1,4 +1,5 @@
-// app.js
+import PageProxy from "./lib/proxy"
+
 App({
   globalData: {
     themeColor: '#4e8ce8',
@@ -6,6 +7,9 @@ App({
     systemInfo: {}
   },
   onLaunch() {
+    // 拦截 Page
+    Page = PageProxy(Page)
+
     this.globalData.headerBtnPosi = wx.getMenuButtonBoundingClientRect()
     wx.getSystemInfo({
       success: (res) => {

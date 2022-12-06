@@ -1,9 +1,14 @@
-const { byte, toTwoDimensionalArray } = require('../../lib/util')
+import { byte } from '../../lib/util'
+const app = getApp()
 
 Component({
+  options: {
+    addGlobalClass: true
+  },
   data: {
     catchList: [] as Array<ImageItem>,
-    list: [] as Array<Array<ImageItem>>
+    list: [] as Array<Array<ImageItem>>,
+    targetStatus: 0 as ScrolStatus
   },
   properties: {
     height: {
@@ -36,7 +41,7 @@ Component({
         ['list[' + this.data.list.length + ']']: newList
       })
     },
-    viewImage(e: WechatMiniprogram.BaseEvent) {
+    handleViewImage(e: WechatMiniprogram.BaseEvent) {
       const { id } = e.target.dataset;
 
       let index = this.data.catchList.findIndex(item => item.id === id)
@@ -50,6 +55,87 @@ Component({
         index: newIndex,
         list: newList
       })
+    },
+    handleScroll(e: WechatMiniprogram.ScrollViewScroll) {
+      if (this.data.list.length === 0) return;
+
+      const { scrollLeft, scrollWidth } = e.detail
+      const scroll = scrollLeft + app.globalData.systemInfo.screenWidth - scrollWidth
+      let targetStatus = 0
+
+      if (scroll > 80) {
+        targetStatus = 2
+      } else if (scroll > 40) {
+        targetStatus = 1
+      } else {
+        targetStatus = 0
+      }
+
+      if (targetStatus !== this.data.targetStatus) {
+        this.setData({
+          targetStatus
+        })
+      }
+    },
+    handleDragend() {
+      if (this.data.targetStatus === 2) {
+        this.triggerEvent('load')
+      }
+    },
+    // 长按 收藏
+    handleLongPress(e: WechatMiniprogram.BaseEvent) {
+      const id: string = e.target.dataset.id;
+      const item = this.data.catchList.find(item => item.id === id)
+      this.triggerEvent('long', item)
+      /* const that = this
+
+      wx.vibrateShort({ type: 'heavy' })
+
+      wx.getStorage({
+        key: 'favorites',
+        success(res) {
+          let favorites = res.data
+
+          if (favorites[id]) {
+            delete favorites[id]
+
+            wx.setStorage({
+              key: 'favorites',
+              data: favorites
+            })
+
+            toast.warning({
+              message: '取消收藏',
+              context: that
+            })
+          } else {
+            wx.setStorage({
+              key: 'favorites',
+              data: {
+                ...favorites,
+                [id]: item
+              }
+            })
+            toast.success({
+              message: '收藏成功',
+              context: that
+            })
+          }
+        },
+        fail() {
+          toast.success({
+            message: '收藏成功',
+            context: that
+          })
+
+          wx.setStorage({
+            key: 'favorites',
+            data: {
+              [id]: item
+            }
+          })
+        }
+      }) */
     }
   }
 })

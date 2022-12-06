@@ -1,8 +1,88 @@
+.bg-img-new {
+  position: fixed;
+  width: 100%;
+  z-index: -1;
+}
+
 .user-info {
-  height: 200px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  text-shadow: 0 0 3px rgba(241, 238, 238, 0.3);
+  height: 300px;
+
+  .logo {
+    width: 180px;
+    height: 180px;
+  }
+
+  .app-name {
+    color: rgb(219, 222, 236);
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  text {
+    color: rgb(168, 197, 216);
+    margin-top: 10px;
+    font-size: .8rem;
+    opacity: 0.8;
+  }
 }
 
 .one-card {
-  height       : 80px;
+  height: 80px;
   margin-bottom: 20px;
+}
+
+.user-nav {
+  display: flex;
+
+  .user-nav-item {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .item-number {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: .5rem;
+    }
+
+    .item-title {
+      font-size: .9rem;
+      font-weight: 600;
+
+      text {
+        margin-left: .4rem;
+      }
+    }
+
+    &:active {
+      background-color: #444446;
+    }
+  }
+}
+
+.btns {
+  background: transparent !important;
+  color: inherit !important;
+  font-size: inherit;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-weight: 500;
+  text-align: inherit !important;
+  width: 100% !important;
+}
+
+.copyright {
+  margin: 30px 0;
+  text-align: center;
+  font-size: .6rem;
+  color: rgb(128, 128, 128);
 }

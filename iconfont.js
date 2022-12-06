@@ -3,8 +3,8 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 // iconfont 项目id
-const key = 'font_3806246_0jojj384jc19'
-//at.alicdn.com/t/c/font_3806246_0jojj384jc19.js
+const key = 'font_3806246_qxxsrk97ttk'
+//at.alicdn.com/t/c/font_3806246_qxxsrk97ttk.js
 const url = 'http://at.alicdn.com/t/c/' + key;
 
 const outPathCSS = './miniprogram/style/iconfont.less';

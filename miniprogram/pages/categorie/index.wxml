@@ -1,19 +1,23 @@
 <ow-custom-navigation title="{{title}}" color="#fff" blur="true" backgroundColor="#ffffff00">
   <view class="close icon-sousuo" bindtap="openSearch"></view>
 </ow-custom-navigation>
-<ow-image-list id="image-list" bindclick="onPreviewList"></ow-image-list>
+
+<!-- 列表 -->
+<ow-image-list id="image-list" bindlong="handleFavorites" bindclick="handlePreview"></ow-image-list>
+
+<!-- 查询 -->
 <ow-search id="search" bindsearch="onSearch">
   <ow-search-item label="{{'关键字'}}">
     <input value="{{form.q}}" bindinput="onFormChagne" data-type="q" cursor-spacing="50" />
   </ow-search-item>
-  <ow-search-item label="{{'分类'}}">
+  <!-- <ow-search-item label="{{'分类'}}">
     <radio-group class="checkbox-group" data-type="categories" bindchange="onFormChagne">
       <label class="checkbox" wx:for="{{search.categories}}" wx:key="index">
         <radio value="{{item.value}}" checked="{{item.checked}}" />
         {{item.label}}
       </label>
     </radio-group>
-  </ow-search-item>
+  </ow-search-item> -->
   <ow-search-item label="{{'比例'}}">
     <checkbox-group class="checkbox-group" data-type="ratios" bindchange="onFormChagne">
       <label class="checkbox" wx:for="{{search.ratios}}" wx:key="index">
@@ -38,10 +42,11 @@
       </label>
     </radio-group>
   </ow-search-item>
-  <ow-search-item label="{{'页码'}}">
+  <ow-search-item label="{{'跳转页码'}}">
     <slider bindchange="onFormChagne" data-type="page" activeColor="#4e4e4e" min="1" max="{{last_page}}" show-value />
   </ow-search-item>
 </ow-search>
-<ow-preview-page model:show="{{previewShow}}">
-  <ow-image-preview model:show="{{previewShow}}" list="{{previewList}}" index="{{previewIndex}}"></ow-image-preview>
-</ow-preview-page>
+
+<!-- 预览 -->
+<include src="../../lib/mixins/preview/index.wxml" />
+<ow-toast id="toast" />

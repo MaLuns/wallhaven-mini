@@ -29,7 +29,11 @@ export const https = async (path: string, method = 'GET', isCatch = true): Promi
   return res
 }
 
-export const getSearch = (pra = {}): Promise<ICloud.CallContainerResult | null> => https("/search?" + objToUrl(pra))
+export const getSearch = (pra: Form = {}): Promise<ICloud.CallContainerResult | null> => {
+  /* pra.purity = '100';
+  pra.categories = '100'; */
+  return https("/search?" + objToUrl(pra))
+}
 
 export const getInfo = (pra = {}): Promise<ICloud.CallContainerResult | null> => https('/w?' + objToUrl(pra))
 

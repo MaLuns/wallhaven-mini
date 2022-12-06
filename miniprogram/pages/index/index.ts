@@ -1,9 +1,9 @@
-import { changeTab } from '../../custom-tab-bar/util'
 import { getSearch, checkContainer } from '../../lib/api'
-import watcher from '../../lib/watcher'
+import favorites from '../../lib/mixins/favorites'
+import preview from '../../lib/mixins/preview/index'
 
 const search = {
-  categories: '111',
+  categories: '100',
   purity: '100',
   ratios: "9x16,10x16,9x18,10x18",
   order: 'desc'
@@ -19,28 +19,32 @@ let metaInfo: Meta = {
 }
 
 Page({
+  behaviors: [favorites, preview],
   data: {
-    // 预览模式
-    previewShow: false,
-    previewIndex: 0,
-    previewList: [],
-  },
-  watch: {
-    previewShow(val: Boolean) {
-      this.getTabBar().setData({
-        show: !val
-      })
-    }
-  },
-  onShow() {
-    changeTab.call(this)
+    list: [
+      {
+        title: "热榜",
+        type: "hotList"
+      },
+      {
+        title: "月榜",
+        type: "topList"
+      },
+      {
+        title: "收藏榜",
+        type: "favoritesList"
+      },
+      /* {
+        title: "随机",
+        type: "randomList"
+      } */
+    ]
   },
   onLoad() {
-    watcher(this)
     checkContainer().then(() => {
       this.getData('top', {
         sorting: "toplist",
-        topRange: "1w"
+        topRange: "1M"
       })
       /* this.getData('random') */
       this.getData('favorites')
@@ -52,15 +56,6 @@ Page({
     if (metaInfo.current_page < metaInfo.last_page) {
       this.getList()
     }
-  },
-  // 打开预览页
-  onPreviewList(e: WechatMiniprogram.CustomEvent) {
-    const { index, list } = e.detail;
-    this.setData({
-      previewShow: true,
-      previewIndex: index,
-      previewList: list
-    })
   },
   // 获取列表
   async getList() {

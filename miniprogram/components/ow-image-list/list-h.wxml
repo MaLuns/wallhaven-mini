@@ -1,10 +1,14 @@
-<scroll-view class="scroll-view" enable-flex="true" scroll-x="{{true}}" scroll-y="{{false}}" show-scrollbar="false" bounces="true" style="height: {{height+20}}rpx;">
-  <block wx:if="{{list.length}}">
-    <block wx:for="{{list}}" wx:for-item="childen" wx:key="index">
-      <ow-image wx:for="{{childen}}" wx:key="index" bindtap="viewImage" class="image" image="{{item}}" type="vertical" height="{{height+'rpx'}}" width="{{item.width+'rpx'}}" data-id="{{item.id}}" showInfo="{{false}}"></ow-image>
+<view class="scroll-view-warp">
+  <scroll-view class="scroll-view" enhanced="{{true}}" binddragend="handleDragend" bindscroll="handleScroll" enable-flex="{{true}}" scroll-x="{{true}}" scroll-y="{{false}}" show-scrollbar="false" bounces="{{true}}" style="height: {{height+20}}rpx;">
+    <block wx:if="{{list.length}}">
+      <block wx:for="{{list}}" wx:for-item="childen" wx:key="index">
+        <ow-image wx:for="{{childen}}" wx:key="index" bindlongpress="handleLongPress" bindtap="handleViewImage" class="image" image="{{item}}" type="vertical" height="{{height+'rpx'}}" width="{{item.width+'rpx'}}" data-id="{{item.id}}" showInfo="{{false}}"></ow-image>
+      </block>
     </block>
-  </block>
-  <block wx:else>
-    <ow-skeleton wx:for="{{10}}" wx:key="index" type="vertical" height="{{height+'rpx'}}" width="{{height*0.56+'rpx'}}"></ow-skeleton>
-  </block>
-</scroll-view>
+    <block wx:else>
+      <ow-skeleton wx:for="{{10}}" wx:key="index" type="vertical" height="{{height+'rpx'}}" width="{{height*0.56+'rpx'}}"></ow-skeleton>
+    </block>
+  </scroll-view>
+  <view class="scroll-view-more {{targetStatus===1?'show':''}}">左滑加载更多</view>
+  <view class="scroll-view-more {{targetStatus===2?'show':''}}">松开查看更多</view>
+</view>

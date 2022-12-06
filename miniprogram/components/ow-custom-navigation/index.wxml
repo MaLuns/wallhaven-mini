@@ -1,11 +1,14 @@
-<view class="share-reward-header {{blur?'blur':''}}" style="min-height: {{navBarSpaceHeight}}px" style="background-color: {{backgroundColor}}">
+<view class="share-reward-header {{blur?'blur':''}}" style="min-height: {{navBarSpaceHeight}}px" style="background-color: {{backgroundColor}};z-index: {{zIndex}};">
   <view class="navbar">
     <view style="min-height:{{statusBarHeight}}px;" />
     <view style="min-height:{{navigateContentHeight}}px;" class="navbar-content">
       <view class="go-back" style="min-height:{{navigateContentHeight}}px;">
-        <slot></slot>
+        <view class="slot">
+          <slot></slot>
+        </view>
+        <text wx:if="{{showBack}}" class="default icon-back" bindtap="handleClose"></text>
       </view>
-      <text class="navbar-title" style="max-width:{{navigateTitleMaxWidth}}px;color:{{color}}">{{title}}</text>
+      <text class="navbar-title" style="max-width:{{navigateTitleMaxWidth}}px;color:{{color}}"> {{title}} </text>
     </view>
   </view>
 </view>

@@ -3,9 +3,9 @@
   padding-bottom: calc(10px + env(safe-area-inset-bottom)); */
   @height    : 40px;
   @width     : 40px;
-  @gap       : 30px;
+  @gap       : 10px;
   @padding-tb: 6px;
-  @padding-lr: 16px;
+  @padding-lr: 6px;
 
   display         : flex;
   justify-content : center;
@@ -38,28 +38,10 @@
     text-align : center;
     line-height: @height;
     color      : rgb(255, 255, 255);
-    font-size  : 18px;
+    font-size  : 24px;
 
     +.tabbar-item {
       margin-left: @gap;
     }
-
-    &.activce {
-      font-weight     : bold;
-      border-radius   : 50%;
-      background-color: rgb(106, 118, 226);
-      box-shadow      : 2px 3px 9px 0px #4f4dd3d2;
-    }
-  }
-
-  .tabbar_bar {
-    background-color   : rgb(85, 189, 250);
-    height             : 4px;
-    width              : calc(@width / 2);
-    position           : absolute;
-    left               : calc(@padding-lr + @width / 4);
-    bottom             : @padding-tb;
-    border-radius      : 4px;
-    /* transition      : transform .3s; */
   }
 }

@@ -4,15 +4,19 @@
     "pages/index/index",
     "pages/categorie/index",
     "pages/view/index",
-    "pages/my/index"
+    "pages/my/index",
+    "pages/my/list/index"
   ],
+  "usingComponents": {
+    "ow-custom-navigation": "/components/ow-custom-navigation/index",
+    "ow-toast": "/components/ow-toast/index"
+  },
   "tabBar": {
     "custom": true,
     "color": "#000000",
     "selectedColor": "#000000",
     "backgroundColor": "#000000",
-    "list": [
-      {
+    "list": [{
         "pagePath": "pages/index/index",
         "text": "首页"
       },

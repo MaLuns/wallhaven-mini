@@ -1,0 +1,5 @@
+<view class="tabbar {{show?'show':'hide'}}">
+  <view class="tabbar-item" wx:for="{{btns}}" wx:key="index" data-index="{{index}}" bindtap="handleClick">
+    <view style="color:{{item.color}};" class="{{item.icon}}"></view>
+  </view>
+</view>

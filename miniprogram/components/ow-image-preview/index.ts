@@ -1,14 +1,11 @@
-const toast = require('../ow-toast/toast')
+import createCacheData from '../../lib/catchData'
+import toast from '../ow-toast/toast'
 
 Component({
   properties: {
-    show: {
-      type: Boolean,
-      value: false
-    },
     list: {
       type: Array,
-      value: []
+      value: [] as Array<ImageItem>
     },
     index: {
       type: Number,
@@ -41,25 +38,25 @@ Component({
     },
   },
   methods: {
-    imageLoadError() {
+    handleImageLoadError() {
       toast.danger({
         message: '图片加载失败',
         context: this
       })
     },
-    close() {
-      this.setData({
-        show: false
-      })
-    },
-    change(e: WechatMiniprogram.BaseEvent) {
+    // 略缩图切换
+    handleChangeThumbImg(e: WechatMiniprogram.BaseEvent) {
       const index = e.target.dataset.index;
+      const historys = createCacheData('historys')
+      const item = this.data.list[index]
       this.setData({
         previewIndex: index,
-        previewItem: this.data.list[index]
+        previewItem: item
       })
+      historys.setDataSync(item.id, item)
     },
-    changeBigImage(e: WechatMiniprogram.CustomEvent) {
+    // 切换 swiper
+    handleChangeBigImage(e: WechatMiniprogram.CustomEvent) {
       let current = e.detail.current
       if (current !== this.data.previewIndex) {
         this.setData({
@@ -70,6 +67,7 @@ Component({
         this.scrollTo(current)
       }
     },
+    // 滚动到指定下标
     scrollTo(index: number) {
       this.createSelectorQuery()
         .select('#scrollview')
@@ -79,6 +77,7 @@ Component({
           scrollView.scrollIntoView(`#image-${index}`);
         })
     },
+    // 调用原生预览
     preViewImage() {
       wx.previewImage({
         urls: [this.data.previewItem.path],
