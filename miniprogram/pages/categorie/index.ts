@@ -1,6 +1,6 @@
-import { getSearch } from '../../lib/api'
 import favorites from '../../lib/mixins/favorites'
 import preview from '../../lib/mixins/preview/index'
+const app = getApp()
 
 const defSearch = {
   categories: '111',
@@ -13,7 +13,7 @@ const defMetaInfo = {
   last_page: 1
 }
 
-let search: Form = {
+let search: SearchForm = {
   ...defSearch
 }
 
@@ -60,7 +60,7 @@ Page({
     form: {
       q: '',
       page: 1
-    } as Form,
+    } as SearchForm,
   },
   onReady() {
     imageList = this.selectComponent("#image-list")
@@ -91,13 +91,12 @@ Page({
   },
   // 获取列表
   getList(reset = false) {
-    let res = getSearch({
+    let res = app.$apis.getSearch({
       ...search,
       page: search.page ? search.page : metaInfo.current_page + 1
-    }).then((res) => {
+    }).then((res: ImagesList) => {
       if (res) {
-        let { data, meta } = res.data as List
-
+        let { data, meta } = res
         imageList.add(data, reset)
 
         this.setData({

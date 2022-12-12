@@ -1,5 +1,5 @@
-import createCacheData from '../../lib/catchData'
 import toast from '../ow-toast/toast'
+const app = getApp()
 
 Component({
   properties: {
@@ -17,6 +17,7 @@ Component({
     }
   },
   data: {
+    safeArea: app.globalData.systemInfo.safeArea,
     previewIndex: 0,
     previewItem: {
       path: '',
@@ -47,13 +48,13 @@ Component({
     // 略缩图切换
     handleChangeThumbImg(e: WechatMiniprogram.BaseEvent) {
       const index = e.target.dataset.index;
-      const historys = createCacheData('historys')
       const item = this.data.list[index]
       this.setData({
         previewIndex: index,
         previewItem: item
       })
-      historys.setDataSync(item.id, item)
+      /* console.log(app.$toPx(275)); */
+      app.$apis.addHistory(item)
     },
     // 切换 swiper
     handleChangeBigImage(e: WechatMiniprogram.CustomEvent) {

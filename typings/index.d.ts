@@ -7,7 +7,7 @@ interface IAppOption {
     userInfoReadyCallback?: WechatMiniprogram.GetUserInfoSuccessCallback,
 }
 
-interface List {
+interface ImagesList {
     data: Array<ImageItem>,
     meta: Meta
 }
@@ -49,7 +49,9 @@ interface Meta {
     seed: null | string
 }
 
-interface Form {
+interface ImageInfo { }
+
+interface SearchForm {
     q?: string,
     purity?: string,
     categories?: string,
@@ -63,6 +65,13 @@ interface NavItem {
     icon?: string,
     pagePath?: string,
     text?: string
+}
+
+type CacheDataType = 'favorites' | 'historys'
+
+interface TotalUserData {
+    favorites: number,
+    historys: number
 }
 
 declare enum ScrolStatus {

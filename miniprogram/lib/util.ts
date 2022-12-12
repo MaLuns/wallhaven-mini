@@ -42,3 +42,33 @@ export const toTwoDimensionalArray = (count: number, defval: any = undefined): A
   }
   return list;
 }
+
+/**
+ * 图片宽高比适应
+ * @param width 容器宽度
+ * @param height 容器高度
+ * @param r 比例
+ * @param iw 图片宽度
+ * @param ih 图片高低
+ * @returns 
+ */
+export const aspectRatioToWH = (width: number, height: number, r: number, iw: number, ih: number) => {
+  let _r = width / height;
+  if (iw < width && ih < height) {
+    return { width: iw, height: ih }
+  }
+  //容器宽度比 大于 内容 宽高比  以高度为基准
+  if (_r > r) {
+    return {
+      width: height * r, height
+    }
+  } else if (_r < r) {
+    return {
+      width, height: width / r
+    }
+  } else {
+    return {
+      width, height
+    }
+  }
+}

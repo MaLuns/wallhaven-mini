@@ -1,11 +1,11 @@
-import { getSearch, checkContainer } from '../../lib/api'
 import favorites from '../../lib/mixins/favorites'
 import preview from '../../lib/mixins/preview/index'
+const app = getApp();
 
 const search = {
   categories: '100',
   purity: '100',
-  ratios: "9x16,10x16,9x18,10x18",
+  ratios: "portrait",
   order: 'desc'
 }
 
@@ -34,19 +34,19 @@ Page({
         title: "收藏榜",
         type: "favoritesList"
       },
-      /* {
+      {
         title: "随机",
         type: "randomList"
-      } */
+      }
     ]
   },
   onLoad() {
-    checkContainer().then(() => {
+    app.$apis.test().then(() => {
       this.getData('top', {
         sorting: "toplist",
         topRange: "1M"
       })
-      /* this.getData('random') */
+      this.getData('random')
       this.getData('favorites')
       this.getData('hot')
       this.getList()
@@ -59,7 +59,7 @@ Page({
   },
   // 获取列表
   async getList() {
-    let res = await getSearch({
+    let res = await app.$apis.getSearch({
       ...search,
       ratios: "portrait",
       sorting: "views",
@@ -67,7 +67,7 @@ Page({
     })
 
     if (res) {
-      let { data = [], meta } = res.data as List
+      let { data = [], meta } = res as ImagesList
       let imageList = this.selectComponent("#image-list")
       imageList.add(data)
       metaInfo = meta
@@ -75,7 +75,7 @@ Page({
   },
   // 获取绑定数据
   async getData(type: string, par = {}) {
-    const res = await getSearch({
+    const res = await app.$apis.getSearch({
       ...search,
       sorting: type,
       ...par,
@@ -83,8 +83,7 @@ Page({
 
     if (res) {
       let imageList = this.selectComponent(`#${type}List`)
-      imageList.add(res.data.data, true)
-
+      imageList.add(res.data, true)
     }
   },
   onShareAppMessage(res) {

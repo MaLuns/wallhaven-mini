@@ -3,7 +3,7 @@ const _data: Record<string, CacheData> = {}
 /**
  * 本地数据缓存操作类
  */
-class CacheData {
+export class CacheData {
   key = ''
 
   _keys: Array<string> = []
@@ -97,7 +97,7 @@ class CacheData {
  * 获取 CacheData
  * @param key 
  */
-const createCacheData = (key: string): CacheData => {
+const createCacheData = (key: CacheDataType): CacheData => {
   if (_data[key]) {
     return _data[key]
   } else {

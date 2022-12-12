@@ -1,3 +1,4 @@
+const app = getApp()
 export default Behavior({
   data: {
     previewShow: false,
@@ -22,6 +23,7 @@ export default Behavior({
         previewIndex: index,
         previewList: list
       })
+      app.$apis.addHistory(list[index])
     },
   }
 })

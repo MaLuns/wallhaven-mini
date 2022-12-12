@@ -1,4 +1,4 @@
-import createCacheData from "../../lib/catchData"
+const app = getApp()
 
 Page({
   data: {
@@ -8,12 +8,10 @@ Page({
     historys: 0,
   },
   onShow() {
-    let keys = ['favorites', 'historys']
-
-    keys.forEach(key => {
-      this.setData({
-        [key]: createCacheData(key).count()
-      })
+    let { favorites, historys } = app.$apis.getTotalUserData() as TotalUserData
+    this.setData({
+      favorites,
+      historys
     })
   },
   // 打开收藏和历史记录

@@ -8,14 +8,22 @@
   z-index         : 999;
 }
 
-.big-image {
+.movable-area {
+  width           : 100vw;
+  height          : 100vh;
+  background-color: transparent;
+  backdrop-filter : blur(20px);
+}
+
+.big-image,
+.bg-image {
   width   : 100vw;
   height  : 100vh;
   position: absolute;
   top     : 0;
 
   &.blur {
-    backdrop-filter: blur(30px);
+    backdrop-filter: blur(4px);
   }
 }
 
@@ -32,7 +40,7 @@
   height        : 275rpx;
   width         : calc(100% - 40rpx);
   position      : absolute;
-  bottom        : 80px;
+  bottom        : 60px;
   padding-left  : 20rpx;
   padding-right : 20rpx;
   padding-bottom: constant(safe-area-inset-bottom);
@@ -59,7 +67,7 @@
 
 .image-btns {
   position       : absolute;
-  bottom         : 20px;
+  bottom         : 0px;
   width          : 100%;
   padding-bottom : constant(safe-area-inset-bottom);
   padding-bottom : env(safe-area-inset-bottom);

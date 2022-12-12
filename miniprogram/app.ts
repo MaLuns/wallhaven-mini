@@ -1,24 +1,25 @@
-import PageProxy from "./lib/proxy"
+import ConcreteFactory from "./lib/apis/index"
+import { PageProxy } from "./lib/proxy/index"
 
 App({
   globalData: {
-    themeColor: '#4e8ce8',
-    headerBtnPosi: {},
-    systemInfo: {}
+    headerBtnPosi: <WechatMiniprogram.ClientRect>{},
+    systemInfo: <WechatMiniprogram.SystemInfo>{}
+  },
+  $apis: ConcreteFactory.getInstance('CloudApi'),
+  $toPx(num: number) {
+    return this.globalData.systemInfo.windowWidth / 750 * num
   },
   onLaunch() {
     // 拦截 Page
     Page = PageProxy(Page)
 
     this.globalData.headerBtnPosi = wx.getMenuButtonBoundingClientRect()
+
     wx.getSystemInfo({
       success: (res) => {
         this.globalData.systemInfo = res
       }
-    })
-
-    wx.cloud.init({
-      env: "prod-2gzbko445547872d"
     })
 
     const updateManager = wx.getUpdateManager()

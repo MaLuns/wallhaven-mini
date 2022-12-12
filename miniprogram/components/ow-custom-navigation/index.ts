@@ -42,25 +42,28 @@ Component({
     }
   },
   data: {
-    statusBarHeight: 24,
-    navigateTitleMaxWidth: 0,
-    fontSizeSetting: 0,
-    navigateContentHeight: 0,
-    navBarSpaceHeight: 0
+    statusBarHeight: 24, // 胶囊高度
+    navigateMaxWidth: 0,// 导航宽度
+    navigateTitleMaxWidth: 0, // 标题宽度
+    navigateContentHeight: 0, // 导航标题区域高度
+    navBarSpaceHeight: 0, // 导航整体高度
+    menuButtonWidth: 0, // 胶囊区域宽度
   },
   attached: function () {
     const headerPosi = app.globalData.headerBtnPosi // 胶囊位置信息
-    let navigateTitleMaxWidth = 0
-    const statusBarHeight = app.globalData.systemInfo.statusBarHeight // 状态栏高度
-    navigateTitleMaxWidth = app.globalData.systemInfo.windowWidth - (app.globalData.systemInfo.windowWidth - headerPosi.left + 15) * 2
+    const statusBarHeight = Math.min(app.globalData.systemInfo.statusBarHeight, app.globalData.systemInfo.safeArea.top) // 状态栏高度
+    const menuButtonWidth = (app.globalData.systemInfo.windowWidth - headerPosi.right) * 2 + headerPosi.width
+    const navigateMaxWidth = app.globalData.systemInfo.windowWidth - menuButtonWidth
+    const navigateTitleMaxWidth = app.globalData.systemInfo.windowWidth - menuButtonWidth * 2
+    const navigateContentHeight = (headerPosi.top - statusBarHeight) * 2 + headerPosi.height
+
     this.setData({
-      statusBarHeight: statusBarHeight,
-      navigateContentHeight: (headerPosi.top - statusBarHeight) * 2 + headerPosi.height,
-      navigateTitleMaxWidth: navigateTitleMaxWidth
-    }, () => {
-      this.setData({
-        navBarSpaceHeight: this.data.statusBarHeight + this.data.navigateContentHeight
-      })
+      statusBarHeight,
+      menuButtonWidth,
+      navigateMaxWidth,
+      navigateTitleMaxWidth,
+      navigateContentHeight,
+      navBarSpaceHeight: statusBarHeight + navigateContentHeight
     })
   },
   methods: {

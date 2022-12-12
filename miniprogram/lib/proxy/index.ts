@@ -9,12 +9,10 @@ function onLoadProxy(onLoad?: WechatMiniprogram.Page.ILifetime['onLoad']): Wecha
   };
 }
 
-function PageProxy(Page: WechatMiniprogram.Page.Constructor): WechatMiniprogram.Page.Constructor {
+export const PageProxy = (Page: WechatMiniprogram.Page.Constructor): WechatMiniprogram.Page.Constructor => {
   return function newPage(options) {
     const newOptions = { ...options };
     newOptions.onLoad = onLoadProxy(options.onLoad);
-    Page(newOptions);
+    return Page(newOptions);
   };
 }
-
-export default PageProxy;
