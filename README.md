@@ -1,11 +1,12 @@
 <h1 align="center">wallhaven-mini</h1>
 
-<div align="center">
+<p align="center">
   壁纸客户端微信小程序版本。
-</div>
-<div align="center" style="margin-top: 20px;">
+</p>
+
+<p align="center" style="margin-top: 20px;">
   <img src="https://img.lkxin.cn/tu/2022/10/18/634e537320ee3.jpg" alt="小程序码" title="小程序码" />
-</div>
+</p>
 
 ## 开源地址
 - gitee：https://gitee.com/ml13/wallhaven-mini
