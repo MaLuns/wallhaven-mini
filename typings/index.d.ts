@@ -7,11 +7,13 @@ interface IAppOption {
     userInfoReadyCallback?: WechatMiniprogram.GetUserInfoSuccessCallback,
 }
 
+// 壁纸列表
 interface ImagesList {
     data: Array<ImageItem>,
     meta: Meta
 }
 
+// 壁纸信息
 interface ImageItem {
     id: string,
     url: string,
@@ -37,9 +39,11 @@ interface ImageItem {
     },
     file_size_str?: string,
     height?: string | number,
-    original?: string
+    original?: string,
+    type?: string
 }
 
+// 分页信息
 interface Meta {
     current_page: number,
     last_page: number,
@@ -51,6 +55,7 @@ interface Meta {
 
 interface ImageInfo { }
 
+// 查询表单
 interface SearchForm {
     q?: string,
     purity?: string,
@@ -61,6 +66,7 @@ interface SearchForm {
     order?: string
 }
 
+// 自定义 Tab
 interface NavItem {
     icon?: string,
     pagePath?: string,

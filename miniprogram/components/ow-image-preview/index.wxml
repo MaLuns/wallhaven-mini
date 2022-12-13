@@ -10,15 +10,22 @@
     </scroll-view>
   </block>
   <block wx:else>
-    <swiper class="big-image" vertical="{{true}}" current="{{previewIndex}}" bindchange="handleChangeBigImage">
-      <swiper-item wx:for="{{list}}" wx:key="index" class="big-image">
-        <image lazy-load class="big-image" mode="aspectFill" src="{{item.path}}" binderror="handleImageLoadError"></image>
+    <swiper class="big-image" vertical="{{true}}" duration="{{duration}}" current="{{swiperIndex}}" circular="{{circular}}" bindchange="handleChangeBigImage">
+      <swiper-item wx:for="{{swiperList}}" wx:key="index" class="big-image">
+        <block wx:if="{{item.type==='placeholder'}}">
+          <view class="placeholder-view"></view>
+        </block>
+        <block wx:else>
+          <image wx:key="item.thumbs.original" class="bg-image" mode="aspectFill" src="{{item.thumbs.original}}"></image>
+          <image show-menu-by-longpress lazy-load class="big-image" mode="aspectFill" src="{{item.path}}" binderror="handleImageLoadError"></image>
+        </block>
       </swiper-item>
     </swiper>
   </block>
   <view class="image-btns">
-    <view bindtap="preViewImage">预览</view>
-    <view bindtap="saveImage">下载</view>
+    <view bindtap="handlePreViewImage">预览</view>
+    <view bindtap="handleSaveImage">下载</view>
+    <view bindtap="handleCopyText">复制</view>
     <!-- <button open-type="share" data-src="{{previewItem.path}}">分享</button> -->
   </view>
 </view>

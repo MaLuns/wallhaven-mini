@@ -93,12 +93,12 @@ Component({
     handleViewImage(e: WechatMiniprogram.BaseEvent) {
       const id: string = e.target.dataset.id;
 
-      let index = this.data.catchList.findIndex(item => item.id === id)
-      let minIndex = Math.max(index - 20, 0)
-      let maxIndex = Math.min(index + 20, this.data.catchList.length)
+      const index = this.data.catchList.findIndex(item => item.id === id)
+      const minIndex = Math.max(index - 20, 0)
+      const maxIndex = Math.min(index + 20, this.data.catchList.length)
 
-      let newList = this.data.catchList.slice(minIndex, maxIndex)
-      let newIndex = index - minIndex;
+      const newList = this.data.catchList.slice(minIndex, maxIndex)
+      const newIndex = index - minIndex;
 
       this.triggerEvent('click', {
         index: newIndex,
