@@ -32,6 +32,7 @@ Page({
   title: '全部',
   data: {
     title: '',
+    loading: true,
     last_page: 1,
     search: {
       categories: [
@@ -73,6 +74,9 @@ Page({
     if (metaInfo.current_page < metaInfo.last_page) {
       this.getList()
     }
+    this.setData({
+      loading: metaInfo.current_page < metaInfo.last_page
+    })
   },
   // 打开查询面板
   openSearch() {

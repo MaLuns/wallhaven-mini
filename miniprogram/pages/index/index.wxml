@@ -7,6 +7,7 @@
 
 <ow-title title="查看榜"></ow-title>
 <ow-image-list id="image-list" bindlong="handleFavorites" bindclick="handlePreview"></ow-image-list>
+<ow-loading wx:if="{{loading}}"></ow-loading>
 
 <!-- 预览 -->
 <include src="../../lib/mixins/preview/index.wxml" />

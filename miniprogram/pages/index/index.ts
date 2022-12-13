@@ -21,6 +21,7 @@ let metaInfo: Meta = {
 Page({
   behaviors: [favorites, preview],
   data: {
+    loading: true,
     list: [
       {
         title: "热榜",
@@ -56,6 +57,9 @@ Page({
     if (metaInfo.current_page < metaInfo.last_page) {
       this.getList()
     }
+    this.setData({
+      loading: metaInfo.current_page < metaInfo.last_page
+    })
   },
   // 获取列表
   async getList() {
@@ -74,15 +78,10 @@ Page({
     }
   },
   // 获取绑定数据
-  async getData(type: string, par = {}) {
-    const res = await app.$apis.getSearch({
-      ...search,
-      sorting: type,
-      ...par,
-    })
-
+  async getData(sorting: string, par = {}) {
+    const res = await app.$apis.getSearch({ ...search, sorting, ...par, })
     if (res) {
-      let imageList = this.selectComponent(`#${type}List`)
+      let imageList = this.selectComponent(`#${sorting}List`)
       imageList.add(res.data, true)
     }
   },

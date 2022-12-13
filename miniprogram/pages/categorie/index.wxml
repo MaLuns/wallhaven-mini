@@ -4,6 +4,7 @@
 
 <!-- 列表 -->
 <ow-image-list id="image-list" bindlong="handleFavorites" bindclick="handlePreview"></ow-image-list>
+<ow-loading wx:if="{{loading}}"></ow-loading>
 
 <!-- 查询 -->
 <ow-search id="search" bindsearch="onSearch">

@@ -9,14 +9,16 @@
   ],
   "usingComponents": {
     "ow-custom-navigation": "/components/ow-custom-navigation/index",
-    "ow-toast": "/components/ow-toast/index"
+    "ow-toast": "/components/ow-toast/index",
+    "ow-loading": "/components/ow-loading/index"
   },
   "tabBar": {
     "custom": true,
     "color": "#000000",
     "selectedColor": "#000000",
     "backgroundColor": "#000000",
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/index/index",
         "text": "首页"
       },
