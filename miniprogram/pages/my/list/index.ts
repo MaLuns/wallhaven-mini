@@ -67,7 +67,7 @@ Page({
       success: () => {
         let item = e.detail as ImageItem;
         typeMap[this.type].delete(item.id)
-        this.selectComponent("#image-list").add(typeMap[this.type].data(), true)
+        this.selectComponent("#image-list").add(typeMap[this.type].data(), true, false)
       }
     })
   }

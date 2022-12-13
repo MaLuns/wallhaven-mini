@@ -8,7 +8,7 @@ Component({
       [],
       [],
       []
-    ],
+    ] as Array<Array<ImageItem>>,
     width: (750 - 4 * 20) / 3
   },
   properties: {
@@ -29,11 +29,15 @@ Component({
     init(count: number) {
       this.data.catchList = []
       this.data.sumHeight = toTwoDimensionalArray(count, 0)
-      this.setData({
-        list: toTwoDimensionalArray(count)
-      })
+      this.data.list = toTwoDimensionalArray(count)
     },
-    add(imgs: Array<ImageItem> = [], reset = false) {
+    /**
+     * 添加列表数据
+     * @param imgs 壁纸列表
+     * @param reset 是否重置
+     * @param isScroll 是否滚动
+     */
+    add(imgs: Array<ImageItem> = [], reset = false, isScroll = reset) {
       // 重置数据
       if (reset) this.init(this.data.count);
 
@@ -65,21 +69,25 @@ Component({
         })
       })
 
-      // 动态更新二维下标
-      let updateObj: { [key: string]: Array<ImageItem> } = {}
-      list.forEach((item, index) => {
-        let len = item.length
-        updateObj[`list[${index}][${len}]`] = newList[index]
-      })
+      this.data.sumHeight = sumHeight
 
-      this.setData(updateObj, () => {
-        this.data.sumHeight = sumHeight
-        if (reset)
-          wx.pageScrollTo({
-            scrollTop: 0,
-            duration: 0,
-          })
-      })
+      if (reset) {
+        list.forEach((item, index) => {
+          list[index][item.length] = newList[index]
+        })
+        this.setData({ list }, () => {
+          if (isScroll)
+            wx.pageScrollTo({ scrollTop: 0, duration: 0, })
+        })
+      } else {
+        // 动态更新二维下标
+        let updateObj: { [key: string]: Array<ImageItem> } = {}
+        list.forEach((item, index) => {
+          updateObj[`list[${index}][${item.length}]`] = newList[index]
+        })
+
+        this.setData(updateObj)
+      }
     },
     // 点击预览
     handleViewImage(e: WechatMiniprogram.BaseEvent) {
@@ -102,55 +110,6 @@ Component({
       const id: string = e.target.dataset.id;
       const item = this.data.catchList.find(item => item.id === id)
       this.triggerEvent('long', item)
-
-      /*
-      const that = this
-      wx.vibrateShort({ type: 'heavy' })
-      wx.getStorage({
-        key: 'favorites',
-        success(res) {
-          let favorites = res.data
-
-          if (favorites[id]) {
-            delete favorites[id]
-
-            wx.setStorage({
-              key: 'favorites',
-              data: favorites
-            })
-
-            toast.warning({
-              message: '取消收藏',
-              context: that
-            })
-          } else {
-            wx.setStorage({
-              key: 'favorites',
-              data: {
-                ...favorites,
-                [id]: item
-              }
-            })
-            toast.success({
-              message: '收藏成功',
-              context: that
-            })
-          }
-        },
-        fail() {
-          toast.success({
-            message: '收藏成功',
-            context: that
-          })
-
-          wx.setStorage({
-            key: 'favorites',
-            data: {
-              [id]: item
-            }
-          })
-        }
-      }) */
     }
   }
 })

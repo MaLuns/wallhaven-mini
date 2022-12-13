@@ -2,8 +2,8 @@ const app = getApp()
 
 Page({
   data: {
-    v: 'v1.0.4',
-    date: '2022/11/27',
+    v: 'v1.0.5',
+    date: '2022/12/13',
     favorites: 0,
     historys: 0,
   },
