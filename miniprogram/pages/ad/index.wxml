@@ -1,2 +1,2 @@
 <view class="logo"></view>
-<view class="tips">免责申明：壁纸均源于 wallhaven.cc，本程序仅供学习</view>
+<view class="tips">{{tips}}</view>

@@ -2,8 +2,8 @@
 <view class="user-info">
   <image src="/images/logo.svg" class="logo" mode="widthFix"></image>
   <view class="app-name"> One-Wallhaven </view>
-  <text>{{v}}</text>
-  <text>最近更新：{{date}}</text>
+  <text>{{version}}</text>
+  <text>最近更新：{{updateDateTime}}</text>
 </view>
 <view class="user-nav one-card">
   <view class="user-nav-item" data-type="favorites" bindtap="handleNav">

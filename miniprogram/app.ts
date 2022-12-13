@@ -1,12 +1,14 @@
 import ConcreteFactory from "./lib/apis/index"
 import { PageProxy } from "./lib/proxy/index"
+import config from "./lib/config"
 
 App({
   globalData: {
     headerBtnPosi: <WechatMiniprogram.ClientRect>{},
     systemInfo: <WechatMiniprogram.SystemInfo>{}
   },
-  $apis: ConcreteFactory.getInstance('CloudApi'),
+  $config: config,
+  $apis: ConcreteFactory.getInstance(config.apiVersion),
   $toPx(num: number) {
     return this.globalData.systemInfo.windowWidth / 750 * num
   },

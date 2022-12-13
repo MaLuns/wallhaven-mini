@@ -1,0 +1,27 @@
+.checkbox-group {
+    label {
+        padding      : 6px 10px;
+        border-left  : 1px #6d6c6c solid;
+        border-bottom: 1px #6d6c6c solid;
+        border-top   : 1px #6d6c6c solid;
+
+        &:first-child {
+            border-radius: 3px 0 0 3px;
+        }
+
+        &:last-child {
+            border-right : 1px #6d6c6c solid;
+            border-radius: 0 3px 3px 0;
+        }
+    }
+
+    label[aria-checked=true] {
+        background: #9ba5ec70;
+        color     : #a5a5a5;
+    }
+
+    checkbox,
+    radio {
+        display: none;
+    }
+}
