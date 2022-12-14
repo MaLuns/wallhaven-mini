@@ -18,7 +18,7 @@ Component({
     },
     type: {
       type: String,
-      value: "sw"
+      value: "image"
     }
   },
   data: {
@@ -51,6 +51,10 @@ Component({
       {
         icon: "icon-fuzhi",
         type: "copy"
+      },
+      {
+        icon: "icon-qiehuan",
+        type: "switch"
       }
     ]
   },
@@ -58,11 +62,7 @@ Component({
     'index,list': function (index, list) {
       if (list.length && list[index]) {
         if (this.data.type === 'image') {
-          this.setData({
-            previewIndex: index,
-            previewItem: list[index],
-            isHide: false
-          }, () => this._scrollTo(index))
+          this._initThumbImage(index, list)
         } else {
           this._initSwiper(index, list)
         }
@@ -73,7 +73,7 @@ Component({
     attached() {
       const { navBarSpaceHeight } = app.$getCustomNavigationInfo()
       this.setData({
-        previewDateTimeTop: navBarSpaceHeight + 50
+        previewDateTimeTop: navBarSpaceHeight + 40
       })
     },
   },
@@ -84,6 +84,14 @@ Component({
         message: '壁纸获取失败，可复制链接前往浏览器打开',
         context: this
       })
+    },
+    // 初始化 略缩图模式
+    _initThumbImage(index: number, list: Array<ImageItem>) {
+      this.setData({
+        previewIndex: index,
+        previewItem: list[index],
+        isHide: false
+      }, () => this._scrollTo(index))
     },
     // 略缩图切换
     handleChangeThumbImg(e: WechatMiniprogram.BaseEvent) {
@@ -122,7 +130,7 @@ Component({
       //this.data.previewIndex = previewIndex
       this.data.swiperIndex = current
     },
-    // 初始化 Swiper
+    // 初始化 Swiper 模式
     _initSwiper(index: number, list: Array<ImageItem>) {
       this.setData({ duration: 0 }, () => {
         let swiperIndex = 1
@@ -179,6 +187,17 @@ Component({
           scrollView.scrollIntoView(`#image-${index}`);
         })
     },
+    _changeViewType() {
+      let type = this.data.type === 'image' ? 'sw' : 'image'
+      if (type === 'sw') {
+        this._initSwiper(this.data.previewIndex, this.data.list)
+      } else {
+        this._initThumbImage(this.data.previewIndex, this.data.list)
+      }
+      this.setData({
+        type
+      })
+    },
     // 复制
     handleCopyText() {
       let { list, previewIndex } = this.data
@@ -202,6 +221,9 @@ Component({
     handleBarBtnClick(e: WechatMiniprogram.CustomEvent) {
       const { type } = e.detail
       switch (type) {
+        case 'switch':
+          this._changeViewType();
+          break;
         case 'favorites':
           wx.vibrateShort({ type: "heavy" })
           let { list, previewIndex } = this.data
