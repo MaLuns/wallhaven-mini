@@ -2,16 +2,16 @@
   <block wx:if="{{type === 'image'}}">
     <image mode="aspectFill" class="bg-image" src="{{previewItem.thumbs.original}}"></image>
     <view class="bg-image blur">
-      <image show-menu-by-longpress lazy-load class="big-image" mode="aspectFill" src="{{previewItem.path}}" binderror="handleImageLoadError"></image>
+      <image bindtap="handleChangeIsHide" show-menu-by-longpress lazy-load class="big-image" mode="aspectFill" src="{{previewItem.path}}" binderror="handleImageLoadError"></image>
       <!-- <view style="width:calc({{safeArea.width}}px - 60px);height:calc({{safeArea.height}}px - 280px);background:#0006; position: absolute;top:100px;left:30px;"></view> -->
     </view>
-    <scroll-view id="scrollview" class="preview-list" scroll-x="{{true}}" scroll-y="{{false}}" show-scrollbar="false" bounces="true">
+    <scroll-view id="scrollview" class="preview-list {{isHide?'hide':'show'}}" scroll-x="{{true}}" scroll-y="{{false}}" show-scrollbar="false" bounces="true">
       <image id="image-{{index}}" bindtap="handleChangeThumbImg" lazy-load data-index="{{index}}" class="{{previewItem.path === item.path?'active':''}}" mode="aspectFill" wx:for="{{list}}" wx:key="index" src="{{item.thumbs.original}}"></image>
     </scroll-view>
   </block>
   <block wx:else>
     <swiper class="big-image" vertical="{{true}}" duration="{{duration}}" current="{{swiperIndex}}" circular="{{circular}}" bindchange="handleChangeBigImage">
-      <swiper-item wx:for="{{swiperList}}" wx:key="index" class="big-image">
+      <swiper-item wx:for="{{swiperList}}" wx:key="index" class="big-image" bindtap="handleChangeIsHide">
         <block wx:if="{{item.type==='placeholder'}}">
           <view class="placeholder-view"></view>
         </block>
@@ -21,12 +21,12 @@
         </block>
       </swiper-item>
     </swiper>
+    <view class="swiper-indicator">{{previewIndex+1}}/{{list.length}}</view>
   </block>
-  <view class="image-btns">
-    <view bindtap="handlePreViewImage">预览</view>
-    <view bindtap="handleSaveImage">下载</view>
-    <view bindtap="handleCopyText">复制</view>
-    <!-- <button open-type="share" data-src="{{previewItem.path}}">分享</button> -->
+  <view class="preview-date-time {{isHide?'show':'hide'}}" style="top:{{previewDateTimeTop}}px;">
+    <view class="tiem">24:01</view>
+    <view class="date">2月30日 星期八</view>
   </view>
+  <ow-bar-btn show="{{!isHide}}" btns="{{btns}}" bindclick="handleBarBtnClick"></ow-bar-btn>
 </view>
 <ow-toast id="toast" />

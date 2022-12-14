@@ -4,6 +4,7 @@ export default Behavior({
     previewShow: false,
     previewIndex: 0,
     previewList: [],
+    type: "image"
   },
   observers: {
     previewShow(val: Boolean) {

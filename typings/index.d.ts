@@ -85,3 +85,33 @@ declare enum ScrolStatus {
     pulling = 1,
     release = 2
 }
+
+/**
+ * 自定义导航信息
+ */
+interface CustomNavigationInfo {
+    /**
+     * 胶囊高度
+     */
+    statusBarHeight: number,
+    /**
+     * 胶囊区域宽度
+     */
+    menuButtonWidth: number,
+    /**
+     * 导航宽度 = 宽度 - 胶囊宽度
+     */
+    navigateMaxWidth: number,
+    /**
+     * 标题宽度 = 宽度 - 胶囊宽度*2
+     */
+    navigateTitleMaxWidth: number,
+    /**
+     * 导航标题区域高度
+     */
+    navigateContentHeight: number,
+    /**
+     * 导航整体高度
+     */
+    navBarSpaceHeight: number,
+}

@@ -1,4 +1,4 @@
-<view class="tabbar {{show?'show':'hide'}}">
+<view class="tabbar {{show?'show':'hide'}}" style="padding:{{btns.length===1?'4px':''}}">
   <view class="tabbar-item" wx:for="{{btns}}" wx:key="index" data-index="{{index}}" bindtap="handleClick">
     <view style="color:{{item.color}};" class="{{item.icon}}"></view>
   </view>

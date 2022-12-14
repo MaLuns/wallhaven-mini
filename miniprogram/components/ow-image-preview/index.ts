@@ -18,7 +18,7 @@ Component({
     },
     type: {
       type: String,
-      value: "image"
+      value: "sw"
     }
   },
   data: {
@@ -30,20 +30,51 @@ Component({
         original: ''
       }
     },
+    // swiper 切换
     circular: true,
     duration: 300,
     swiperIndex: 1, // 当前 swiper 下标
-    swiperList: <Array<ImageItem>>[]
+    swiperList: <Array<ImageItem>>[],
+    previewDateTimeTop: 0,
+    // 隐藏其他杂项
+    isHide: false,
+    // 按钮列表
+    btns: [
+      {
+        icon: "icon-shoucang",
+        type: "favorites"
+      },
+      {
+        icon: "icon-xiazai",
+        type: "download"
+      },
+      {
+        icon: "icon-fuzhi",
+        type: "copy"
+      }
+    ]
   },
   observers: {
     'index,list': function (index, list) {
       if (list.length && list[index]) {
         if (this.data.type === 'image') {
-          this.setData({ previewIndex: index, previewItem: list[index] }, () => this._scrollTo(index))
+          this.setData({
+            previewIndex: index,
+            previewItem: list[index],
+            isHide: false
+          }, () => this._scrollTo(index))
         } else {
           this._initSwiper(index, list)
         }
       }
+    },
+  },
+  lifetimes: {
+    attached() {
+      const { navBarSpaceHeight } = app.$getCustomNavigationInfo()
+      this.setData({
+        previewDateTimeTop: navBarSpaceHeight + 50
+      })
     },
   },
   methods: {
@@ -79,14 +110,16 @@ Component({
         this.setData({
           swiperIndex: this.data.swiperIndex
         })
+        toast.warning("没有更多了")
         return
       }
 
       this.setData({
+        previewIndex,
         [`swiperList[${this._updateUpdateIndex(current, state)}]`]: this._getUpdateSwiperItem(previewIndex, state),
       })
 
-      this.data.previewIndex = previewIndex
+      //this.data.previewIndex = previewIndex
       this.data.swiperIndex = current
     },
     // 初始化 Swiper
@@ -103,7 +136,8 @@ Component({
           previewIndex: index,
           swiperIndex,
           swiperList,
-          duration: 500
+          duration: 500,
+          isHide: false
         })
       })
     },
@@ -145,76 +179,6 @@ Component({
           scrollView.scrollIntoView(`#image-${index}`);
         })
     },
-    // 调用原生预览
-    handlePreViewImage() {
-      wx.previewImage({
-        urls: [this.data.previewItem.path],
-      })
-    },
-    /* checkAuthorize() {
-      return new Promise<void>((resolve) => {
-        wx.getSetting({
-          success: (res) => {
-            if (!res.authSetting['scope.writePhotosAlbum']) {
-              wx.authorize({
-                scope: 'scope.writePhotosAlbum',
-                success: () => {
-                  resolve()
-                },
-                fail: () => {
-                  wx.showModal({
-                    title: '提示',
-                    content: '您拒绝了相册权限，将无法使用下载功能',
-                    success: res => {
-                      if (res.confirm) {
-                        // 跳转设置页面
-                        wx.openSetting({
-                          success: res => {
-                            if (res.authSetting['scope.writePhotosAlbum']) {
-                              resolve()
-                            }
-                          }
-                        });
-                      }
-                    }
-                  });
-                }
-              })
-            } else {
-              resolve()
-            }
-          }
-        })
-      })
-    }, */
-    handleSaveImage() {
-      toast.primary({
-        message: '功能开发中，请点击预览长按保存',
-        context: this
-      })
-      /* return;
-      this.checkAuthorize().then(() => {
-        wx.getImageInfo({
-          src: this.data.previewUrl,
-          success: (res) => {
-            let path = res.path;
-            wx.saveImageToPhotosAlbum({
-              filePath: path,
-              success: (res) => {
-                console.log(res);
-              },
-              fail: (res) => {
-                console.log(res);
-              }
-            })
-          },
-          fail: (res) => {
-            console.log(res);
-          }
-        })
-
-      }) */
-    },
     // 复制
     handleCopyText() {
       let { list, previewIndex } = this.data
@@ -227,6 +191,34 @@ Component({
           })
         }
       })
+    },
+    //
+    handleChangeIsHide() {
+      this.setData({
+        isHide: !this.data.isHide
+      })
+    },
+    // 操作按钮
+    handleBarBtnClick(e: WechatMiniprogram.CustomEvent) {
+      const { type } = e.detail
+      switch (type) {
+        case 'favorites':
+          wx.vibrateShort({ type: "heavy" })
+          let { list, previewIndex } = this.data
+          app.$apis.addFavorite(list[previewIndex])
+          toast.success("收藏成功！")
+          break;
+        case 'copy':
+          this.handleCopyText()
+          break;
+        case 'download':
+          toast.primary({
+            message: '功能开发中，请长按壁纸保存',
+            context: this
+          })
+          break;
+      }
+
     }
   }
 })

@@ -2,10 +2,11 @@ Component({
   options: {
     addGlobalClass: true
   },
-  data: {
-    show: true
-  },
   properties: {
+    show: {
+      type: Boolean,
+      value: true
+    },
     btns: {
       type: Array,
       value: []
@@ -13,10 +14,12 @@ Component({
   },
   methods: {
     handleClick(e: WechatMiniprogram.CustomEvent) {
-      let btn = this.data.btns[e.currentTarget.dataset.index]
+      const btn = this.data.btns[e.currentTarget.dataset.index]
       if (btn.click) {
-        let pages = getCurrentPages()
+        const pages = getCurrentPages()
         btn.click.call(pages[pages.length - 1])
+      } else {
+        this.triggerEvent('click', btn)
       }
     }
   }

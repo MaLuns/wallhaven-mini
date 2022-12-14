@@ -50,21 +50,7 @@ Component({
     menuButtonWidth: 0, // 胶囊区域宽度
   },
   attached: function () {
-    const headerPosi = app.globalData.headerBtnPosi // 胶囊位置信息
-    const statusBarHeight = Math.min(app.globalData.systemInfo.statusBarHeight, app.globalData.systemInfo.safeArea.top) // 状态栏高度
-    const menuButtonWidth = (app.globalData.systemInfo.windowWidth - headerPosi.right) * 2 + headerPosi.width
-    const navigateMaxWidth = app.globalData.systemInfo.windowWidth - menuButtonWidth
-    const navigateTitleMaxWidth = app.globalData.systemInfo.windowWidth - menuButtonWidth * 2
-    const navigateContentHeight = (headerPosi.top - statusBarHeight) * 2 + headerPosi.height
-
-    this.setData({
-      statusBarHeight,
-      menuButtonWidth,
-      navigateMaxWidth,
-      navigateTitleMaxWidth,
-      navigateContentHeight,
-      navBarSpaceHeight: statusBarHeight + navigateContentHeight
-    })
+    this.setData(app.$getCustomNavigationInfo())
   },
   methods: {
     handleClose() {

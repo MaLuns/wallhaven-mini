@@ -3,8 +3,8 @@ import preview from '../../lib/mixins/preview/index'
 const app = getApp();
 
 const search = {
-  categories: '100',
-  purity: '100',
+  categories: '111',
+  purity: '111',
   ratios: "portrait",
   order: 'desc'
 }
@@ -38,6 +38,10 @@ Page({
       {
         title: "随机",
         type: "randomList"
+      },
+      {
+        title: "PC精选",
+        type: "pcList"
       }
     ]
   },
@@ -46,6 +50,10 @@ Page({
       this.getData('top', {
         sorting: "toplist",
         topRange: "1M"
+      })
+      this.getData('pc', {
+        sorting: "favorites",
+        ratios: "16x9"
       })
       this.getData('random')
       this.getData('favorites')
