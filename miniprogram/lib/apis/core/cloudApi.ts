@@ -1,6 +1,7 @@
 import AbstractApi from "./abstractApi";
 import createCacheData, { CacheData } from "../catchData";
 import { objToUrl } from "../../util";
+import config from "../../config";
 
 let catchDataMap = new Map();
 let catchMap = new Map();
@@ -38,7 +39,7 @@ class CloudApi extends AbstractApi {
     constructor() {
         super()
         wx.cloud.init({
-            env: "prod-2gzbko445547872d"
+            env: config.cloudEnv
         })
         this.favorites = createCacheData("favorites")
         this.historys = createCacheData("historys")

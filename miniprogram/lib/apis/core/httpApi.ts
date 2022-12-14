@@ -1,8 +1,8 @@
 import AbstractApi from "./abstractApi";
 import createCacheData, { CacheData } from "../catchData";
 import { objToUrl } from "../../util";
+import config from "../../config";
 
-const baseURL = "https://wallhaven.cc/api/v1"
 let catchDataMap = new Map();
 let catchMap = new Map();
 
@@ -17,7 +17,7 @@ const https = async (path: string, isCatch = true): Promise<WechatMiniprogram.Re
 
     let res: WechatMiniprogram.RequestSuccessCallbackResult = await new Promise((resolve) => {
         wx.request({
-            url: baseURL + path,
+            url: config.httpsApiBase + path,
             method: "GET",
             success(res) {
                 resolve(res)
