@@ -2,7 +2,7 @@
   <block wx:if="{{type === 'image'}}">
     <image mode="aspectFill" class="bg-image" src="{{previewItem.thumbs.original}}"></image>
     <view class="bg-image blur">
-      <image bindtap="handleChangeIsHide" show-menu-by-longpress lazy-load class="big-image" mode="aspectFill" src="{{previewItem.path}}" binderror="handleImageLoadError"></image>
+      <image bindtap="handleChangeIsHide" show-menu-by-longpress class="big-image" mode="aspectFill" src="{{previewItem.path}}" binderror="handleImageLoadError"></image>
       <!-- <view style="width:calc({{safeArea.width}}px - 60px);height:calc({{safeArea.height}}px - 280px);background:#0006; position: absolute;top:100px;left:30px;"></view> -->
     </view>
     <scroll-view id="scrollview" class="preview-list {{isHide?'hide':'show'}}" scroll-x="{{true}}" scroll-y="{{false}}" show-scrollbar="false" bounces="true">

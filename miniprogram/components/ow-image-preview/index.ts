@@ -62,7 +62,7 @@ Component({
     'index,list': function (index, list) {
       if (list.length && list[index]) {
         if (this.data.type === 'image') {
-          this._initThumbImage(index, list)
+          this._initThumbImage(index, list, () => this._scrollTo(index))
         } else {
           this._initSwiper(index, list)
         }
@@ -86,12 +86,14 @@ Component({
       })
     },
     // 初始化 略缩图模式
-    _initThumbImage(index: number, list: Array<ImageItem>) {
+    _initThumbImage(index: number, list: Array<ImageItem>, cb?: Function) {
       this.setData({
         previewIndex: index,
         previewItem: list[index],
         isHide: false
-      }, () => this._scrollTo(index))
+      }, () => {
+        if (cb) cb()
+      })
     },
     // 略缩图切换
     handleChangeThumbImg(e: WechatMiniprogram.BaseEvent) {
@@ -131,7 +133,7 @@ Component({
       this.data.swiperIndex = current
     },
     // 初始化 Swiper 模式
-    _initSwiper(index: number, list: Array<ImageItem>) {
+    _initSwiper(index: number, list: Array<ImageItem>, cb?: Function) {
       this.setData({ duration: 0 }, () => {
         let swiperIndex = 1
         let swiperList: Array<ImageItem> = []
@@ -146,6 +148,8 @@ Component({
           swiperList,
           duration: 500,
           isHide: false
+        }, () => {
+          if (cb) cb()
         })
       })
     },
@@ -187,15 +191,11 @@ Component({
           scrollView.scrollIntoView(`#image-${index}`);
         })
     },
+    // 切换预览模式
     _changeViewType() {
       let type = this.data.type === 'image' ? 'sw' : 'image'
-      if (type === 'sw') {
-        this._initSwiper(this.data.previewIndex, this.data.list)
-      } else {
-        this._initThumbImage(this.data.previewIndex, this.data.list)
-      }
-      this.setData({
-        type
+      this[type === 'sw' ? '_initSwiper' : '_initThumbImage'](this.data.previewIndex, this.data.list, () => {
+        this.setData({ type })
       })
     },
     // 复制
@@ -211,7 +211,6 @@ Component({
         }
       })
     },
-    //
     handleChangeIsHide() {
       this.setData({
         isHide: !this.data.isHide
