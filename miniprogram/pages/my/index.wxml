@@ -1,7 +1,7 @@
 <image src='/images/bg.png' mode='widthFix' class='bg-img-new'></image>
 <view class="user-info">
   <image src="/images/logo.svg" class="logo" mode="widthFix"></image>
-  <view class="app-name"> One-Wallhaven </view>
+  <view class="app-name">One-Wallhaven</view>
   <text>版本：{{version}}</text>
   <text>最近更新：{{updateDateTime}}</text>
 </view>
@@ -12,12 +12,6 @@
       <text>Favorites</text>
     </text>
   </view>
-  <!-- <view class="user-nav-item">
-    <text class="item-number" style="color:#ac8972">56</text>
-    <text class="item-title icon-xiazai">
-      <text>下载</text>
-    </text>
-  </view> -->
   <view class="user-nav-item" data-type="historys" bindtap="handleNav">
     <text class="item-number" style="color:#87a870">{{historys}}</text>
     <text class="item-title icon-zuji">
@@ -38,12 +32,6 @@
       <text class='text-grey'>打赏</text>
     </view>
   </view>
-  <!-- <view class="one-item arrow">
-    <view class='content'>
-      <text class='icon-guanyu'></text>
-      <text class='text-grey'>关于</text>
-    </view>
-  </view> -->
   <view class="one-item arrow">
     <view class='content'>
       <button type="default" class="btns" open-type="feedback">

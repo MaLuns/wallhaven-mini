@@ -1,4 +1,4 @@
-<ow-custom-navigation title="{{title}}" color="#fff" blur="true" backgroundColor="#ffffff00">
+<ow-custom-navigation title="{{title}}" color="#fff" blur="true" backgroundColor="#0000002b">
   <view class="close icon-sousuo" bindtap="openSearch"></view>
 </ow-custom-navigation>
 

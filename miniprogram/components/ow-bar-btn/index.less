@@ -3,7 +3,7 @@
   padding-bottom: calc(10px + env(safe-area-inset-bottom)); */
   @height    : 40px;
   @width     : 40px;
-  @gap       : 30px;
+  @gap       : 1rem;
   @padding-tb: 4px;
   @padding-lr: 12px;
 
@@ -21,10 +21,10 @@
   border-radius   : @height;
   overflow        : hidden;
   box-shadow      : 3px 5px 9px 0px #0d152369;
-  transition   : transform .3s;
+  transition      : transform .3s;
 
   &.show {
-    transform : translateY(0);
+    transform: translateY(0);
   }
 
   &.hide {

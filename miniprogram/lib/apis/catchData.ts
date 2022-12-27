@@ -41,12 +41,14 @@ export class CacheData {
    * @param data 
    */
   setDataSync(id: string, data: ImageItem) {
-    const list = wx.getStorageSync(this.key) || {}
-    this._keys.push(id)
-    wx.setStorageSync(this.key, {
-      ...list,
-      [id]: data
-    })
+    if (!this.has(id)) {
+      const list = wx.getStorageSync(this.key) || {}
+      this._keys.push(id)
+      wx.setStorageSync(this.key, {
+        ...list,
+        [id]: data
+      })
+    }
   }
 
   /**

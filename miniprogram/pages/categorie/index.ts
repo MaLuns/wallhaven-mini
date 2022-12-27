@@ -4,7 +4,8 @@ const app = getApp()
 
 const defSearch = {
   categories: '111',
-  sorting: 'favorites',
+  purity: '111',
+  sorting: 'date_added',
   ratios: "portrait",
 }
 
@@ -48,8 +49,8 @@ Page({
         { value: '9x18', label: '9x18', }
       ],
       sorting: [
-        { label: '收藏', value: 'favorites', checked: true },
-        { label: '最新', value: 'date_added' },
+        { label: '最新', value: 'date_added', checked: true },
+        { label: '收藏', value: 'favorites' },
         { label: '最热', value: 'hot' },
         { label: '查看', value: 'views' }
       ],

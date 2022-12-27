@@ -1,4 +1,4 @@
-<ow-custom-navigation bindclose="handleBack" showBack="{{true}}" title="{{title}}" blur="true" color="#fff" backgroundColor="#ffffff00"></ow-custom-navigation>
+<ow-custom-navigation bindclose="handleBack" showBack="{{true}}" title="{{title}}" blur="true" color="#fff" backgroundColor="#0000002b"></ow-custom-navigation>
 
 <!-- 列表 -->
 <ow-image-list wx:if="{{show}}" id="image-list" bindlong="handleLong" bindclick="handlePreview"></ow-image-list>

@@ -63,7 +63,8 @@ interface SearchForm {
     page?: number,
     ratios?: string,
     sorting?: string,
-    order?: string
+    order?: string,
+    apikey?: string
 }
 
 // 自定义 Tab
