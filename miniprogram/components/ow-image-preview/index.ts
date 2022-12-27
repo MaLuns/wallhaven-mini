@@ -131,6 +131,8 @@ Component({
 
       //this.data.previewIndex = previewIndex
       this.data.swiperIndex = current
+
+      app.$apis.addHistory(currentItem)
     },
     // 初始化 Swiper 模式
     _initSwiper(index: number, list: Array<ImageItem>, cb?: Function) {
@@ -197,6 +199,8 @@ Component({
       this[type === 'sw' ? '_initSwiper' : '_initThumbImage'](this.data.previewIndex, this.data.list, () => {
         this.setData({ type })
       })
+
+      toast.primary("已切换预览模式")
     },
     // 复制
     handleCopyText() {

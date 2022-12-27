@@ -2,7 +2,7 @@ const app = getApp()
 
 Page({
   data: {
-    version: app.$config.version,
+    version: '',
     updateDateTime: app.$config.updateDateTime,
     favorites: 0,
     historys: 0,
@@ -12,6 +12,12 @@ Page({
     this.setData({
       favorites,
       historys
+    })
+  },
+  onLoad() {
+    const acountInfo = wx.getAccountInfoSync()
+    this.setData({
+      version: acountInfo.miniProgram.version
     })
   },
   // 打开收藏和历史记录
