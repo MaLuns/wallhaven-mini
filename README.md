@@ -28,7 +28,7 @@
 ## 个人搭建
 ### 后端部署
 
-因为小程序需要 hppts 而且需要你的域名备案，如果你刚好有，你可以自建一个代理服务，将你请求代理到 [https://wallhaven.cc/api/v1](https://wallhaven.cc/api/v1)。如果你没有备案域名，你可以使用云开发或者云托管进行代理。
+因为小程序需要 https 而且需要你的域名备案，如果你刚好有，你可以自建一个代理服务，将你请求代理到 [https://wallhaven.cc/api/v1](https://wallhaven.cc/api/v1)。如果你没有备案域名，你可以使用云开发或者云托管进行代理。
 
 一个简易 Node 实现
 
@@ -89,7 +89,7 @@ export default {
 }
 ```
 
-小程序的数据请求相关写在 `miniprogram\lib\apis\core\` 里，如果你有自己实现版本，可以继承 abstractApi 实现相关方法，然后修改 config 里的 apiVersion 配置。默认实现里收藏历史记录等都是记录在小程序本地的，如果你需要存在服务的，可自行修改相关接口。
+小程序的数据请求相关写在 `miniprogram\lib\apis\core\` 里，如果你有自己实现版本，可以继承 abstractApi 实现相关方法，然后修改 config 里的 apiVersion 配置。默认实现里收藏历史记录等都是记录在小程序本地的，如果你需要存在服务器，可自行修改相关接口。
 
 ## 参与贡献
 
