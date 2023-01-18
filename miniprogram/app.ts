@@ -1,6 +1,7 @@
 import ConcreteFactory from "./lib/apis/index"
 import { PageProxy } from "./lib/proxy/index"
 import config from "./lib/config"
+const { enableDebug } = wx.getAppBaseInfo()
 
 App({
   globalData: {
@@ -10,7 +11,7 @@ App({
   /** 全局配置 */
   $config: config,
   /** Api 类 */
-  $apis: ConcreteFactory.getInstance(config.apiVersion),
+  $apis: ConcreteFactory.getInstance(enableDebug ? config.debugApiVersion : config.apiVersion),
   /** 自定义导航信息 */
   $getCustomNavigationInfo(): CustomNavigationInfo {
     if (this.$_customNavigationInfo.statusBarHeight) return this.$_customNavigationInfo;
