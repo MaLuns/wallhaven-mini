@@ -19,7 +19,7 @@
   <img width="24%" src="https://mp-8b005489-7724-4f8c-afdd-30192ff4f7ae.cdn.bspapp.com/wallhaven/mini-search2.jpg" alt="查询" title="查询" />
   <img width="24%" src="https://mp-8b005489-7724-4f8c-afdd-30192ff4f7ae.cdn.bspapp.com/wallhaven/mini-preview.jpg" alt="查看" title="查看" />
   <img width="24%" src="https://mp-8b005489-7724-4f8c-afdd-30192ff4f7ae.cdn.bspapp.com/wallhaven/mini-preview2.jpg" alt="查看" title="查看" />
-  <img width="24%" src="https://mp-8b005489-7724-4f8c-afdd-30192ff4f7ae.cdn.bspapp.com/wallhaven/mini-mini-my.jpg" alt="我的" title="我的" />
+  <img width="24%" src="https://mp-8b005489-7724-4f8c-afdd-30192ff4f7ae.cdn.bspapp.com/wallhaven/mini-my.jpg" alt="我的" title="我的" />
   <img width="24%" src="https://mp-8b005489-7724-4f8c-afdd-30192ff4f7ae.cdn.bspapp.com/wallhaven/mini-collection.jpg" alt="收藏" title="收藏" />
   <img width="24%" src="https://mp-8b005489-7724-4f8c-afdd-30192ff4f7ae.cdn.bspapp.com/wallhaven/mini-history.jpg" alt="历史" title="历史" />
 </div>
